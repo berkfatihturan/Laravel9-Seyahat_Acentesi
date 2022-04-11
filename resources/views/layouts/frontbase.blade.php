@@ -1,14 +1,12 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Travel &mdash; 100% Free Fully Responsive HTML5 Template by FREEHTML5.co</title>
+    <title>@yield("title")</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Free HTML5 Template by FREEHTML5.CO" />
     <meta name="keywords" content="free html5, free template, free bootstrap, html5, css3, mobile first, responsive" />
@@ -69,38 +67,19 @@
     <!--[if lt IE 9]>
     <script src="{{asset('assets')}}/js/respond.min.js"></script>
     <![endif]-->
+
+    @yield("head")
 </head>
+
 <body>
-@include('home._header')
-<!-- end:header-top -->
+@include("home.header")
 
-<div class="fh5co-hero">
-    <div class="fh5co-overlay"></div>
-    <div class="fh5co-cover" data-stellar-background-ratio="0.5" style="background-image: url(images/cover_bg_1.jpg);">
-        <div class="desc">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-5 col-md-5">
-                        @include('home._nagivation-tabulation')
-                    </div>
-                    <div class="desc2 animate-box">
-                        <div class="col-sm-7 col-sm-push-1 col-md-7 col-md-push-1">
-                            <p>HandCrafted by <a href="http://frehtml5.co/" target="_blank" class="fh5co-site-name">FreeHTML5.co</a></p>
-                            <h2>Exclusive Limited Time Offer</h2>
-                            <h3>Fly to Hong Kong via Los Angeles, USA</h3>
-                            <span class="price">$599</span>
-                            <!-- <p><a class="btn btn-primary btn-lg" href="#">Get Started</a></p> -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+@section('nagivation')
+    @include("home.nagivation")
+@show
+
+@yield('content')
 
 
-
-
-@include('home._footer')
+@include("home.footer")
 </body>
-</html>
