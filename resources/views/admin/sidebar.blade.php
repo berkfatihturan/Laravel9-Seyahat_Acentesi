@@ -35,6 +35,10 @@
             </li>
 
             <li>
+                <a  href="{{route('admin_package_index')}}"><i class="fa fa-dashboard "></i>Package</a>
+            </li>
+
+            <li>
                 <a  href="/admin/comments"><i class="fa fa-dashboard "></i>Comments</a>
             </li>
 

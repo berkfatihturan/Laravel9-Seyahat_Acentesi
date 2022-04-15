@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Controller extends Model
 {
     use HasFactory;
+
+
 }

@@ -23,11 +23,11 @@
                     <div class="panel panel-default">
                         <div class="panel-heading" style="position: relative">
                             <div style="display: inline-block;">
-                                Category List
+                                Package List
                             </div>
                             <p style="display: inline-block; position: absolute; right: 10px; top:5px;">
-                                <button type="button" class="btn btn-info" style="color: white"><a class="text-decoration-none" href="{{route('admin_category_edit',['id'=>$data->id])}}">Edit</a></button>
-                                <button type="button" class="btn btn-danger" style="color: white"><a href="{{route('admin_category_destroy',['id'=>$data->id])}}">Delete</a></button>
+                                <button type="button" class="btn btn-info" style="color: white"><a class="text-decoration-none" href="{{route('admin_package_edit',['id'=>$data->id])}}">Edit</a></button>
+                                <button type="button" class="btn btn-danger" style="color: white"><a href="{{route('admin_package_destroy',['id'=>$data->id])}}">Delete</a></button>
                             </p>
                         </div>
                         <div class="panel-body">
@@ -36,6 +36,13 @@
                                     <tr>
                                         <th style="width:10%;";>Id</th>
                                         <td>{{$data->id}}</td>
+                                    </tr>
+
+                                    <tr>
+                                        <th style="width:10%;";>Category</th>
+                                        <td>
+                                            {{\App\Http\Controllers\AdminPanel\CategoryContoller::getParentsTree($data->category,$data->category->title)}}
+                                        </td>
                                     </tr>
 
                                     <tr>
@@ -49,8 +56,28 @@
                                     </tr>
 
                                     <tr>
-                                        <th style="width:10%;">Description</th>
-                                        <td>{{$data->description}}</td>
+                                        <th style="width:10%;">Price</th>
+                                        <td>{{$data->price}}</td>
+                                    </tr>
+
+                                    <tr>
+                                        <th style="width:10%;">Quantity</th>
+                                        <td>{{$data->quantity}}</td>
+                                    </tr>
+
+                                    <tr>
+                                        <th style="width:10%;">Min Quantity</th>
+                                        <td>{{$data->minquantity}}</td>
+                                    </tr>
+
+                                    <tr>
+                                        <th style="width:10%;">Tax</th>
+                                        <td>{{$data->tax}}</td>
+                                    </tr>
+
+                                    <tr>
+                                        <th style="width:10%;">Detail</th>
+                                        <td>{{$data->detail}}</td>
                                     </tr>
 
                                     <tr>

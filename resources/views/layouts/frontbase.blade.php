@@ -68,6 +68,8 @@
     <script src="{{asset('assets')}}/js/respond.min.js"></script>
     <![endif]-->
 
+    <script src="https://kit.fontawesome.com/5b8a026b90.js" crossorigin="anonymous"></script>
+
     @yield("head")
 </head>
 

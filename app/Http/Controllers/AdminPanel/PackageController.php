@@ -4,10 +4,11 @@ namespace App\Http\Controllers\AdminPanel;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Package;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
-class CategoryContoller extends Controller
+class PackageController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,22 +20,22 @@ class CategoryContoller extends Controller
         'getParentsTree'
     ];
 
-    public static function getParentsTree($category,$title){
-        if ($category->parent_id == 0){
+    public static function getParentsTree($package,$title){
+        if ($package->category_id == 0){
             return $title;
         }
 
-        $parent= Category::find($category->parent_id);
+        $parent= Package::find($package->category_id);
         $title = $parent->title . ' > ' .$title;
-        return CategoryContoller::getParentsTree($parent,$title);
+        return PackageController::getParentsTree($parent,$title);
     }
 
 
 
     public function index()
     {
-        $data = Category::all();
-        return view('admin.category.index',[
+        $data = Package::all();
+        return view('admin.package.index',[
             'data'=>$data
         ]);
     }
@@ -47,7 +48,7 @@ class CategoryContoller extends Controller
     public function create()
     {
         $data = Category::all();
-        return view('admin.category.create',[
+        return view('admin.package.create',[
             'data'=>$data
         ]);
     }
@@ -60,30 +61,36 @@ class CategoryContoller extends Controller
      */
     public function store(Request $request)
     {
-        $data = new Category();
-        $data->parent_id= $request->parent_id;
+        $data = new Package();
+        $data->category_id= $request->category_id;
+        $data->user_id=0;
         $data->title = $request->title;
         $data->keywords = $request->keywords;
-        $data->description = $request->description;
+        $data->descriptions = $request->descriptions;
+        $data->detail=$request->detail;
+        $data->price = $request->price ;
+        $data->quantity = $request->quantity;
+        $data->minquantity= $request->minquantity ;
+        $data->tax = $request->tax ;
         if ($request->file('image')){
             $data->image=$request->file('image')->store('images');
         }
         $data->status = $request->status;
         $data->save();
-        return redirect('admin/category');
+        return redirect('admin/package');
 
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Category  $category
+     * @param  \App\Models\Package  $package
      * @return \Illuminate\Http\Response
      */
-    public function show(Category $category,$id)
+    public function show(Package $package,$id)
     {
-        $data = Category::find($id);
-        return view('admin.category.show',[
+        $data = Package::find($id);
+        return view('admin.package.show',[
             'data'=>$data
         ]);
     }
@@ -91,14 +98,14 @@ class CategoryContoller extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Category  $category
+     * @param  \App\Models\Package  $package
      * @return \Illuminate\Http\Response
      */
-    public function edit(Category $category,$id)
+    public function edit(Package $package,$id)
     {
-        $data = Category::find($id);
+        $data = Package::find($id);
         $dataList = Category::all();
-        return view('admin.category.edit',[
+        return view('admin.package.edit',[
             'data'=>$data,'dataList'=>$dataList
         ]);
     }
@@ -107,35 +114,44 @@ class CategoryContoller extends Controller
      * Updata the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Category  $category
+     * @param  \App\Models\Package  $package
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category,$id)
+    public function update(Request $request, Package $package,$id)
     {
-        $data = Category::find($id);
-        $data->parent_id= $request->parent_id;
+        $data = Package::find($id);
+        $data->category_id= $request->category_id;
+        $data->user_id=0;
         $data->title = $request->title;
         $data->keywords = $request->keywords;
-        $data->description = $request->description;
-        $data->status = $request->status;
+        $data->descriptions = $request->descriptions;
+        $data->detail=$request->detail;
+        $data->price = $request->price ;
+        $data->quantity = $request->quantity;
+        $data->minquantity= $request->minquantity ;
+        $data->tax = $request->tax ;
         if ($request->file('image')){
             $data->image=$request->file('image')->store('images');
         }
+        $data->status = $request->status;
         $data->save();
-        return redirect('admin/category');
+        return redirect('admin/package');
+
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Category  $category
+     * @param  \App\Models\Package  $package
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $category,$id)
+    public function destroy(Package $package,$id)
     {
-        $data= Category::find($id);
-        Storage::delete($data->image);
+        $data= Package::find($id);
+        if($data->image && Storage::disk('public')->exists($data->image)){
+            Storage::delete($data->image);
+        }
         $data->delete();
-        return redirect('admin/category');
+        return redirect('admin/package');
     }
 }
