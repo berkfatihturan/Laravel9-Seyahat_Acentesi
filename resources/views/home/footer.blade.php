@@ -78,6 +78,7 @@
 
 <!-- jQuery -->
 
+@yield('foot')
 
 <script src="{{asset('assets')}}/js/jquery.min.js"></script>
 <!-- jQuery Easing -->

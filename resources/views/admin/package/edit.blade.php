@@ -3,6 +3,10 @@
 
 @section('title', 'Edit '. $data->title)
 
+@section('head')
+    <script src="https://cdn.ckeditor.com/ckeditor5/34.0.0/classic/ckeditor.js"></script>
+@endsection
+
 @section('content')
 
     <div id="page-wrapper">
@@ -28,18 +32,18 @@
                                 <div class="form-group">
                                     <label>Parent Package</label>
                                     <select class="form-control"  name="category_id">
-                                        <option value="0"> Main Package</option>
                                         @foreach($dataList as $rs)
                                             <option value="{{$rs->id}}" @if($rs->id == $data->category_id) selected @endif>
                                                 {{\App\Http\Controllers\AdminPanel\CategoryContoller::getParentsTree($rs,$rs->title)}}
                                             </option>
                                         @endforeach
+                                        <option value="0"> Other </option>
                                     </select>
                                 </div>
 
                                 <div class="form-group">
                                     <label>Title</label>
-                                    <input class="form-control" type="text" placeholder="Title" name="title" value="{{$data->title}}">
+                                    <input class="form-control" type="text" placeholder="Title" name="title" value="{{$data->title}}" required>
                                 </div>
 
                                 <div class="form-group">
@@ -53,18 +57,23 @@
                                 </div>
 
                                 <div class="form-group">
+                                    <label>Nights</label>
+                                    <input class="form-control" type="number" name="nights" value="{{$data->nights}}">
+                                </div>
+
+                                <div class="form-group">
                                     <label>Price</label>
                                     <input class="form-control" type="number" name="price" value="{{$data->price}}">
                                 </div>
 
                                 <div class="form-group">
-                                    <label>Quantity</label>
-                                    <input class="form-control" type="number" name="quantity" value="{{$data->quantity}}">
+                                    <label>Start Date</label>
+                                    <input class="form-control" type="date" name="start_date" value="{{$data->start_date}}">
                                 </div>
 
                                 <div class="form-group">
-                                    <label>Min Quantity</label>
-                                    <input class="form-control" type="number" name="minquantity" value="{{$data->minquantity}}">
+                                    <label>End Date</label>
+                                    <input class="form-control" type="date" name="end_date" value="{{$data->end_date}}">
                                 </div>
 
                                 <div class="form-group">
@@ -74,9 +83,19 @@
 
                                 <div class="form-group">
                                     <label>Detail</label>
-                                    <textarea class="form-control" name="detail">
+                                    <textarea class="form-control" id="editor" name="detail">
                                         {{$data->detail}}
                                     </textarea>
+                                    <script>
+                                        ClassicEditor
+                                            .create( document.querySelector( '#editor' ) )
+                                            .then( editor => {
+                                                console.log( editor );
+                                            } )
+                                            .catch( error => {
+                                                console.error( error );
+                                            } );
+                                    </script>
                                 </div>
 
 

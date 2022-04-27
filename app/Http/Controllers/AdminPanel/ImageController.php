@@ -21,7 +21,7 @@ class ImageController extends Controller
         $package = Package::find($pid);
         $image = DB::table('images')->where('package_id',$pid)->get();
         return view('admin.image.index',[
-            'image'=>$image,'package'=>$package
+            'image'=>$image,'package'=>$package,'cal'=>1
         ]);
     }
 

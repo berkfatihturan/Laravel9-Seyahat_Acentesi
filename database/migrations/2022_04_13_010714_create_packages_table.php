@@ -21,13 +21,15 @@ return new class extends Migration
             $table->string('keywords')->nullable();
             $table->string('descriptions')->nullable();
             $table->string('image')->nullable();
-            $table->string('detail')->nullable();
+            $table->text('detail')->nullable();
             $table->float('price')->nullable();
-            $table->integer('quantity')->nullable();
-            $table->integer('minquantity')->nullable();
+            $table->integer('nights')->nullable();
+            $table->date('start_date');
+            $table->date('end_date');
             $table->integer('tax')->nullable();
             $table->string('status',6)->default('False');
             $table->timestamps();
+
         });
     }
 

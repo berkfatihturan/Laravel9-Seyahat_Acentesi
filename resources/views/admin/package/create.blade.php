@@ -3,6 +3,10 @@
 
 @section('title', 'Package ADD')
 
+@section('head')
+    <script src="https://cdn.ckeditor.com/ckeditor5/34.0.0/classic/ckeditor.js"></script>
+@endsection
+
 @section('content')
 
     <div id="page-wrapper">
@@ -10,8 +14,6 @@
             <div class="row">
                 <div class="col-md-12">
                     <h1 class="page-head-line">Add Package</h1>
-                    <h1 class="page-subhead-line">This is dummy text , you can replace it with your original text. </h1>
-
                 </div>
             </div>
             <!-- /. ROW  -->
@@ -37,7 +39,7 @@
 
                                 <div class="form-group">
                                     <label>Title</label>
-                                    <input class="form-control" type="text" placeholder="Title" name="title">
+                                    <input class="form-control" type="text" placeholder="Title" name="title" required>
                                 </div>
 
                                 <div class="form-group">
@@ -51,18 +53,23 @@
                                 </div>
 
                                 <div class="form-group">
+                                    <label>Nights</label>
+                                    <input class="form-control" type="number" name="nights" value="0">
+                                </div>
+
+                                <div class="form-group">
                                     <label>Price</label>
                                     <input class="form-control" type="number" name="price" value="0">
                                 </div>
 
                                 <div class="form-group">
-                                    <label>Quantity</label>
-                                    <input class="form-control" type="number" name="quantity" value="0">
+                                    <label>Start Date</label>
+                                    <input class="form-control" type="date" name="start_date">
                                 </div>
 
                                 <div class="form-group">
-                                    <label>Min Quantity</label>
-                                    <input class="form-control" type="number" name="minquantity" value="0">
+                                    <label>End Date</label>
+                                    <input class="form-control" type="date" name="end_date">
                                 </div>
 
                                 <div class="form-group">
@@ -72,7 +79,17 @@
 
                                 <div class="form-group">
                                     <label>Detail</label>
-                                    <textarea class="form-control" name="detail"></textarea>
+                                    <textarea class="form-control" id="editor" name="detail"></textarea>
+                                    <script>
+                                        ClassicEditor
+                                            .create( document.querySelector( '#editor' ) )
+                                            .then( editor => {
+                                                console.log( editor );
+                                            } )
+                                            .catch( error => {
+                                                console.error( error );
+                                            } );
+                                    </script>
                                 </div>
 
 

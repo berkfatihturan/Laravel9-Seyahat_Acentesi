@@ -34,7 +34,7 @@
                                             <th style="width: 20%">Category</th>
                                             <th style="width: 20%">Title</th>
                                             <th style="width: 10% ">Price</th>
-                                            <th style="width: 10%">Quantity</th>
+                                            <th style="width: 10%">Nights</th>
                                             <th style="width: 10%">Image</th>
                                             <th style="width: 10%">Status</th>
                                             <th>Gallery</th>
@@ -47,10 +47,16 @@
                                     @foreach($data as $rs)
                                         <tr>
                                             <td>{{$rs->id}}</td>
-                                            <td>{{\App\Http\Controllers\AdminPanel\PackageController::getParentsTree($rs->category,$rs->category->title)}}</td>
+                                            <td>
+                                                @if($rs->category!=NULL)
+                                                    {{\App\Http\Controllers\AdminPanel\PackageController::getParentsTree($rs->category,$rs->category->title)}}
+                                                @else
+                                                    Other
+                                                @endif
+                                            </td>
                                             <td>{{$rs->title}}</td>
                                             <td>{{$rs->price}}</td>
-                                            <td>{{$rs->quantity}}</td>
+                                            <td>{{$rs->nights}}</td>
                                             <td>
                                                 @if($rs->image)
                                                     <img src="{{\Illuminate\Support\Facades\Storage::url($rs->image)}}" height="50px">

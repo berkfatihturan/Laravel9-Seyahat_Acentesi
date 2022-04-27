@@ -41,7 +41,11 @@
                                     <tr>
                                         <th style="width:10%;";>Category</th>
                                         <td>
-                                            {{\App\Http\Controllers\AdminPanel\CategoryContoller::getParentsTree($data->category,$data->category->title)}}
+                                            @if($data->category!=NULL)
+                                                {{\App\Http\Controllers\AdminPanel\CategoryContoller::getParentsTree($data->category,$data->category->title)}}
+                                            @else
+                                                Other
+                                            @endif
                                         </td>
                                     </tr>
 
@@ -56,18 +60,23 @@
                                     </tr>
 
                                     <tr>
+                                        <th style="width:10%;">Nights</th>
+                                        <td>{{$data->nights}}</td>
+                                    </tr>
+
+                                    <tr>
                                         <th style="width:10%;">Price</th>
                                         <td>{{$data->price}}</td>
                                     </tr>
 
                                     <tr>
-                                        <th style="width:10%;">Quantity</th>
-                                        <td>{{$data->quantity}}</td>
+                                        <th style="width:10%;">Start Date</th>
+                                        <td>{{$data->start_date}}</td>
                                     </tr>
 
                                     <tr>
-                                        <th style="width:10%;">Min Quantity</th>
-                                        <td>{{$data->minquantity}}</td>
+                                        <th style="width:10%;">End Date</th>
+                                        <td>{{$data->end_date}}</td>
                                     </tr>
 
                                     <tr>
@@ -77,7 +86,7 @@
 
                                     <tr>
                                         <th style="width:10%;">Detail</th>
-                                        <td>{{$data->detail}}</td>
+                                        <td>{!! $data->detail !!}</td>
                                     </tr>
 
                                     <tr>

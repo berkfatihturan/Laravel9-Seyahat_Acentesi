@@ -22,12 +22,12 @@
 
                         <div class="dropdown-item">
                             <label>Title</label>
-                            <input class="form-control" type="text" placeholder="Title" name="title">
+                            <input class="form-control" type="text" placeholder="Title" name="title" required>
                         </div>
 
                         <div class="form-group" class="dropdown-item">
                             <label>Image</label>
-                            <input class="form-control" type="file" name="image">
+                            <input class="form-control" type="file" name="image" required>
                         </div>
 
                         <button type="submit" class="btn btn-info">Save</button>
@@ -53,7 +53,7 @@
                             @endif
                             <div class="overlay">
                                 <p>
-                                    {{$rs->id}} - {{$rs->title}}
+                                    {{$cal++}} - {{$rs->title}}
                                 </p>
                             </div>
                         </div>

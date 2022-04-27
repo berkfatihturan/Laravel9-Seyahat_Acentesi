@@ -61,7 +61,7 @@ class CategoryContoller extends Controller
     public function store(Request $request)
     {
         $data = new Category();
-        $data->parent_id= $request->parent_id;
+        $data->parent_id = $request->parent_id;
         $data->title = $request->title;
         $data->keywords = $request->keywords;
         $data->description = $request->description;

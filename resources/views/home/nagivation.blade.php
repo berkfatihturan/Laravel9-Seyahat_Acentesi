@@ -22,73 +22,75 @@
 
                             <!-- Tab panes -->
                             <div class="tab-content">
-                                <div role="tabpanel" class="tab-pane active" id="flights">
-                                    <div class="row">
-                                        <div class="col-xxs-12 col-xs-6 mt">
-                                            <div class="input-field">
-                                                <label for="from">From:</label>
-                                                <input type="text" class="form-control" id="from-place" placeholder="Los Angeles, USA"/>
+                                <form role="form" action="/home/search" method="post">
+                                    @csrf
+                                    <div role="tabpanel" class="tab-pane active" id="flights">
+                                        <div class="row">
+                                            <div class="col-xxs-12 col-xs-6 mt">
+                                                <div class="input-field">
+                                                    <label for="from">From:</label>
+                                                    <input type="text" class="form-control" id="from-place" placeholder="Los Angeles, USA"/>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="col-xxs-12 col-xs-6 mt">
-                                            <div class="input-field">
-                                                <label for="from">To:</label>
-                                                <input type="text" class="form-control" id="to-place" placeholder="Tokyo, Japan"/>
+                                            <div class="col-xxs-12 col-xs-6 mt">
+                                                <div class="input-field">
+                                                    <label for="from">To:</label>
+                                                    <input type="text" class="form-control" id="to-place" placeholder="Tokyo, Japan"/>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="col-xxs-12 col-xs-6 mt alternate">
-                                            <div class="input-field">
-                                                <label for="date-start">Check In:</label>
-                                                <input type="text" class="form-control" id="date-start" placeholder="mm/dd/yyyy"/>
+                                            <div class="col-xxs-12 col-xs-6 mt alternate">
+                                                <div class="input-field">
+                                                    <label for="date-start">Check In:</label>
+                                                    <input type="date" class="form-control" id="start_date" name="start_date" placeholder="mm/dd/yyyy"/>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="col-xxs-12 col-xs-6 mt alternate">
-                                            <div class="input-field">
-                                                <label for="date-end">Check Out:</label>
-                                                <input type="text" class="form-control" id="date-end" placeholder="mm/dd/yyyy"/>
+                                            <div class="col-xxs-12 col-xs-6 mt alternate">
+                                                <div class="input-field">
+                                                    <label for="date-end">Check Out:</label>
+                                                    <input type="text" class="form-control" id="date-end" placeholder="mm/dd/yyyy"/>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="col-sm-12 mt">
-                                            <section>
-                                                <label for="class">Class:</label>
-                                                <select class="cs-select cs-skin-border">
-                                                    <option value="" disabled selected>Economy</option>
-                                                    <option value="economy">Economy</option>
-                                                    <option value="first">First</option>
-                                                    <option value="business">Business</option>
-                                                </select>
-                                            </section>
-                                        </div>
-                                        <div class="col-xxs-12 col-xs-6 mt">
-                                            <section>
-                                                <label for="class">Adult:</label>
-                                                <select class="cs-select cs-skin-border">
-                                                    <option value="" disabled selected>1</option>
-                                                    <option value="1">1</option>
-                                                    <option value="2">2</option>
-                                                    <option value="3">3</option>
-                                                    <option value="4">4</option>
-                                                </select>
-                                            </section>
-                                        </div>
-                                        <div class="col-xxs-12 col-xs-6 mt">
-                                            <section>
-                                                <label for="class">Children:</label>
-                                                <select class="cs-select cs-skin-border">
-                                                    <option value="" disabled selected>1</option>
-                                                    <option value="1">1</option>
-                                                    <option value="2">2</option>
-                                                    <option value="3">3</option>
-                                                    <option value="4">4</option>
-                                                </select>
-                                            </section>
-                                        </div>
-                                        <div class="col-xs-12">
-                                            <input type="submit" class="btn btn-primary btn-block" value="Search Flight">
+                                            <div class="col-sm-12 mt">
+                                                <section>
+                                                    <label for="class">Class:</label>
+                                                    <select class="cs-select cs-skin-border">
+                                                        <option value="" disabled selected>Economy</option>
+                                                        <option value="economy">Economy</option>
+                                                        <option value="first">First</option>
+                                                        <option value="business">Business</option>
+                                                    </select>
+                                                </section>
+                                            </div>
+                                            <div class="col-xxs-12 col-xs-6 mt">
+                                                <section>
+                                                    <label for="class">Adult:</label>
+                                                    <select class="cs-select cs-skin-border">
+                                                        <option value="" disabled selected>1</option>
+                                                        <option value="1">1</option>
+                                                        <option value="2">2</option>
+                                                        <option value="3">3</option>
+                                                        <option value="4">4</option>
+                                                    </select>
+                                                </section>
+                                            </div>
+                                            <div class="col-xxs-12 col-xs-6 mt">
+                                                <section>
+                                                    <label for="class">Children:</label>
+                                                    <select class="cs-select cs-skin-border">
+                                                        <option value="" disabled selected>1</option>
+                                                        <option value="1">1</option>
+                                                        <option value="2">2</option>
+                                                        <option value="3">3</option>
+                                                        <option value="4">4</option>
+                                                    </select>
+                                                </section>
+                                            </div>
+                                            <div class="col-xs-12">
+                                                <input type="submit" class="btn btn-primary btn-block" value="Search Flight">
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-
+                                </form>
                                 <div role="tabpanel" class="tab-pane" id="hotels">
                                     <div class="row">
                                         <div class="col-xxs-12 col-xs-12 mt">
@@ -220,7 +222,6 @@
 
                         </div>
                     </div>
-
                     <div class="desc2 animate-box">
                         <div class="col-sm-7 col-sm-push-1 col-md-7 col-md-push-1">
                             <p>HandCrafted by <a href="http://frehtml5.co/" target="_blank" class="fh5co-site-name">FreeHTML5.co</a></p>

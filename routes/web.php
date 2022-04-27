@@ -22,12 +22,17 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/home', [HomeController::class, 'index']);
+Route::get('/home', [HomeController::class, 'index'])->name("home_index");
 
+/*deneme*/
+Route::post('/home/search', [HomeController::class, 'search'])->name("home_search");
+Route::get('/home/deneme2', [HomeController::class, 'package'])->name("home_package");
+/*deneme----*/
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
+
 
 /* Admin Panel Routes*/
 Route::prefix('admin')->name("admin_")->group(function (){

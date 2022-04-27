@@ -4,9 +4,14 @@ namespace App\Http\Controllers\AdminPanel;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Image;
 use App\Models\Package;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+use function GuzzleHttp\Promise\all;
 
 class PackageController extends Controller
 {
@@ -68,9 +73,10 @@ class PackageController extends Controller
         $data->keywords = $request->keywords;
         $data->descriptions = $request->descriptions;
         $data->detail=$request->detail;
+        $data->nights=$request->nights;
         $data->price = $request->price ;
-        $data->quantity = $request->quantity;
-        $data->minquantity= $request->minquantity ;
+        $data->start_date = $request->start_date;
+        $data->end_date= $request->end_date ;
         $data->tax = $request->tax ;
         if ($request->file('image')){
             $data->image=$request->file('image')->store('images');
@@ -125,10 +131,11 @@ class PackageController extends Controller
         $data->title = $request->title;
         $data->keywords = $request->keywords;
         $data->descriptions = $request->descriptions;
+        $data->nights=$request->nights;
         $data->detail=$request->detail;
         $data->price = $request->price ;
-        $data->quantity = $request->quantity;
-        $data->minquantity= $request->minquantity ;
+        $data->start_date = $request->start_date;
+        $data->end_date= $request->end_date ;
         $data->tax = $request->tax ;
         if ($request->file('image')){
             $data->image=$request->file('image')->store('images');
@@ -151,7 +158,15 @@ class PackageController extends Controller
         if($data->image && Storage::disk('public')->exists($data->image)){
             Storage::delete($data->image);
         }
+
+        /*$collection = Image::where('package_id', '$id')->get(['*']);
+        Image::destroy(collect($collection));*/
+
+        /*Image delete */
+        Image::where('package_id', '=', $id)->delete();
+
         $data->delete();
         return redirect('admin/package');
     }
+
 }

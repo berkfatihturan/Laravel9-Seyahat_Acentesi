@@ -17,39 +17,19 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-4 col-sm-6 fh5co-tours animate-box" data-animate-effect="fadeIn">
-                    <div href="#"><img src="{{asset('assets')}}/images/place-1.jpg" alt="Free HTML5 Website Template by FreeHTML5.co" class="img-responsive">
+                @foreach($data as $rs)
+                <div class="col-md-4 col-sm-6 fh5co-tours animate-box" data-animate-effect="fadeIn" >
+                    <div href="#"><img src="{{\Illuminate\Support\Facades\Storage::url($rs->image)}}" style="height: 400px" alt="Free HTML5 Website Template by FreeHTML5.co" class="img-responsive">
                         <div class="desc">
                             <span></span>
-                            <h3>New York</h3>
-                            <span>3 nights + Flight 5*Hotel</span>
-                            <span class="price">$1,000</span>
+                            <h3>{{$rs->title}}</h3>
+                            <span>{{$rs->nights}} nights </span>
+                            <span class="price">{{$rs->price}}</span>
                             <a class="btn btn-primary btn-outline" href="#">Book Now <i class="icon-arrow-right22"></i></a>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4 col-sm-6 fh5co-tours animate-box" data-animate-effect="fadeIn">
-                    <div href="#"><img src="{{asset('assets')}}/images/place-2.jpg" alt="Free HTML5 Website Template by FreeHTML5.co" class="img-responsive">
-                        <div class="desc">
-                            <span></span>
-                            <h3>Philippines</h3>
-                            <span>4 nights + Flight 5*Hotel</span>
-                            <span class="price">$1,000</span>
-                            <a class="btn btn-primary btn-outline" href="#">Book Now <i class="icon-arrow-right22"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6 fh5co-tours animate-box" data-animate-effect="fadeIn">
-                    <div href="#"><img src="{{asset('assets')}}/images/place-3.jpg" alt="Free HTML5 Website Template by FreeHTML5.co" class="img-responsive">
-                        <div class="desc">
-                            <span></span>
-                            <h3>Hongkong</h3>
-                            <span>2 nights + Flight 4*Hotel</span>
-                            <span class="price">$1,000</span>
-                            <a class="btn btn-primary btn-outline" href="#">Book Now <i class="icon-arrow-right22"></i></a>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
                 <div class="col-md-12 text-center animate-box">
                     <p><a class="btn btn-primary btn-outline btn-lg" href="#">See All Offers <i class="icon-arrow-right22"></i></a></p>
                 </div>
@@ -60,87 +40,20 @@
     <div id="fh5co-features">
         <div class="container">
             <div class="row">
-                <div class="col-md-4 animate-box">
-
+                @foreach($dataCategory as $rs)
+                <div class="col-md-3 animate-box ">
                     <div class="feature-left">
 							<span class="icon">
 								<i class="icon-hotairballoon"></i>
 							</span>
                         <div class="feature-copy">
-                            <h3>Family Travel</h3>
-                            <p>Facilis ipsum reprehenderit nemo molestias. Aut cum mollitia reprehenderit.</p>
-                            <p><a href="#">Learn More</a></p>
-                        </div>
-                    </div>
-
-                </div>
-
-                <div class="col-md-4 animate-box">
-                    <div class="feature-left">
-							<span class="icon">
-								<i class="icon-search"></i>
-							</span>
-                        <div class="feature-copy">
-                            <h3>Travel Plans</h3>
-                            <p>Facilis ipsum reprehenderit nemo molestias. Aut cum mollitia reprehenderit.</p>
+                            <h3>{{$rs->title}}</h3>
+                            <p>{{$rs->description}}</p>
                             <p><a href="#">Learn More</a></p>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4 animate-box">
-                    <div class="feature-left">
-							<span class="icon">
-								<i class="icon-wallet"></i>
-							</span>
-                        <div class="feature-copy">
-                            <h3>Honeymoon</h3>
-                            <p>Facilis ipsum reprehenderit nemo molestias. Aut cum mollitia reprehenderit.</p>
-                            <p><a href="#">Learn More</a></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-4 animate-box">
-
-                    <div class="feature-left">
-							<span class="icon">
-								<i class="icon-wine"></i>
-							</span>
-                        <div class="feature-copy">
-                            <h3>Business Travel</h3>
-                            <p>Facilis ipsum reprehenderit nemo molestias. Aut cum mollitia reprehenderit.</p>
-                            <p><a href="#">Learn More</a></p>
-                        </div>
-                    </div>
-
-                </div>
-
-                <div class="col-md-4 animate-box">
-                    <div class="feature-left">
-							<span class="icon">
-								<i class="icon-genius"></i>
-							</span>
-                        <div class="feature-copy">
-                            <h3>Solo Travel</h3>
-                            <p>Facilis ipsum reprehenderit nemo molestias. Aut cum mollitia reprehenderit.</p>
-                            <p><a href="#">Learn More</a></p>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="col-md-4 animate-box">
-                    <div class="feature-left">
-							<span class="icon">
-								<i class="icon-chat"></i>
-							</span>
-                        <div class="feature-copy">
-                            <h3>Explorer</h3>
-                            <p>Facilis ipsum reprehenderit nemo molestias. Aut cum mollitia reprehenderit.</p>
-                            <p><a href="#">Learn More</a></p>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </div>
