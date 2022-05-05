@@ -1,0 +1,53 @@
+
+h3{
+    margin: 0;
+}
+.panel-body{
+    padding: 0;
+}
+
+.package-image img{
+    object-fit: fill;
+    width: 100%;
+}
+
+.package-image{
+    padding: 0;
+}
+
+.package-descriptions{
+    padding-left: 20px;
+    padding-top: 10px;
+}
+
+.package-price_box{
+    min-height: 163px;
+    text-align: center;
+    padding-top: 10%;
+    padding-bottom: 10%;
+}
+
+.list-package{
+    margin-top: 5vh;
+}
+
+.list-package p{
+    margin:0;
+}
+
+.package-price_box__content .price{
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.package-price_box__content .tax-info{
+    font-size: 12px;
+    font-weight: lighter;
+}
+
+.package-price_box__content .package-detail{
+    margin-top: 10px;
+}
+
+
+

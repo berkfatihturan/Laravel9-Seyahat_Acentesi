@@ -1,3 +1,15 @@
+*{
+    font-size: 16px;
+}
+
+.sticky-banner{
+    height: auto;
+}
+
+#fh5co-logo a{
+    font-size: 28px !important;
+}
+
 ul{
     list-style: none;
 }
@@ -22,100 +34,61 @@ header{
     margin-bottom: 2px;
 }
 
+h1{
+    font-size: 3rem!important;
+}
+
+.carousel-control-prev-icon{
+    position: absolute;
+    left:20px;
+}
+
+.carousel-control-next-icon{
+    position: absolute;
+    right: 20px;
+}
+
 /*******/
 
-body {
-    font-family: Arial;
-    margin: 0;
-}
-
-* {
-    box-sizing: border-box;
-}
-
-img {
-    vertical-align: middle;
-}
-
-/* Position the image container (needed to position the left and right arrows) */
-.container {
+.carousel {
     position: relative;
 }
-
-/* Hide the images by default */
-.mySlides {
-    display: none;
+.carousel-item img {
+    object-fit: cover;
 }
-
-/* Add a pointer when hovering over the thumbnail images */
-.cursor {
-    cursor: pointer;
-}
-
-/* Next & previous buttons */
-.prev,
-.next {
-    cursor: pointer;
-    position: absolute;
-    top: 40%;
-    width: auto;
-    padding: 16px;
-    margin-top: -50px;
-    color: white;
-    font-weight: bold;
-    font-size: 20px;
-    border-radius: 0 3px 3px 0;
-    user-select: none;
-    -webkit-user-select: none;
-}
-
-/* Position the "next button" to the right */
-.next {
+#carousel-thumbs {
+    background: rgba(255,255,255,.3);
+    bottom: 0;
+    left: 0;
+    padding: 0 50px;
     right: 0;
-    border-radius: 3px 0 0 3px;
 }
-
-/* On hover, add a black background color with a little bit see-through */
-.prev:hover,
-.next:hover {
-    background-color: rgba(0, 0, 0, 0.8);
+#carousel-thumbs img {
+    border: 5px solid transparent;
+    cursor: pointer;
 }
-
-/* Number text (1/3 etc) */
-.numbertext {
-    color: #f2f2f2;
-    font-size: 12px;
-    padding: 8px 12px;
-    position: absolute;
-    top: 0;
+#carousel-thumbs img:hover {
+    border-color: rgba(255,255,255,.3);
 }
-
-/* Container for image text */
-.caption-container {
-    text-align: center;
-    background-color: #222;
-    padding: 2px 16px;
-    color: white;
+#carousel-thumbs .selected img {
+    border-color: #fff;
 }
-
-.row:after {
-    content: "";
-    display: table;
-    clear: both;
+.carousel-control-prev,
+.carousel-control-next {
+    width: 50px;
 }
-
-/* Six columns side by side */
-.column {
-    float: left;
-    width: 16.66%;
+@media all and (max-width: 767px) {
+    .carousel-container #carousel-thumbs img {
+        border-width: 3px;
+    }
 }
-
-/* Add a transparency effect for thumnbail images */
-.demo {
-    opacity: 0.6;
+@media all and (min-width: 576px) {
+    .carousel-container #carousel-thumbs {
+        position: absolute;
+    }
 }
-
-.active,
-.demo:hover {
-    opacity: 1;
+@media all and (max-width: 576px) {
+    .carousel-container #carousel-thumbs {
+        background: #ccccce;
+    }
 }

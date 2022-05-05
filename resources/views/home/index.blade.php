@@ -31,7 +31,7 @@
                 </div>
                 @endforeach
                 <div class="col-md-12 text-center animate-box">
-                    <p><a class="btn btn-primary btn-outline btn-lg" href="#">See All Offers <i class="icon-arrow-right22"></i></a></p>
+                    <p><a class="btn btn-primary btn-outline btn-lg" href="/list">See All Offers <i class="icon-arrow-right22"></i></a></p>
                 </div>
             </div>
         </div>

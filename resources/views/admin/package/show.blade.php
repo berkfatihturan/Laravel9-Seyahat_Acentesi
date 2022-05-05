@@ -60,6 +60,11 @@
                                     </tr>
 
                                     <tr>
+                                        <th style="width:10%;">Descriptions</th>
+                                        <td>{{$data->descriptions}}</td>
+                                    </tr>
+
+                                    <tr>
                                         <th style="width:10%;">Nights</th>
                                         <td>{{$data->nights}}</td>
                                     </tr>

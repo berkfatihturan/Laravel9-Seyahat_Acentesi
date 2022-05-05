@@ -22,10 +22,11 @@
 
                             <!-- Tab panes -->
                             <div class="tab-content">
-                                <form role="form" action="/home/search" method="post">
-                                    @csrf
-                                    <div role="tabpanel" class="tab-pane active" id="flights">
-                                        <div class="row">
+
+                                <div role="tabpanel" class="tab-pane active" id="flights">
+                                    <div class="row">
+                                        <form role="form" action="/search" method="post">
+                                            @csrf
                                             <div class="col-xxs-12 col-xs-6 mt">
                                                 <div class="input-field">
                                                     <label for="from">From:</label>
@@ -88,9 +89,10 @@
                                             <div class="col-xs-12">
                                                 <input type="submit" class="btn btn-primary btn-block" value="Search Flight">
                                             </div>
-                                        </div>
+                                        </form>
                                     </div>
-                                </form>
+                                </div>
+
                                 <div role="tabpanel" class="tab-pane" id="hotels">
                                     <div class="row">
                                         <div class="col-xxs-12 col-xs-12 mt">

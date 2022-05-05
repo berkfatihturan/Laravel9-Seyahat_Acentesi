@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
-use \App\Http\Controllers\AdminPanel\HomeController as AdminHomeController;
+use \App\Http\Controllers\AdminPanel\AdminHomeController as AdminHomeController;
 use \App\Http\Controllers\AdminPanel\CategoryContoller as AdminCategoryController;
 use \App\Http\Controllers\AdminPanel\PackageController as AdminPackageController;
 use \App\Http\Controllers\AdminPanel\ImageController as AdminImageController;
@@ -17,16 +17,17 @@ use \App\Http\Controllers\AdminPanel\ImageController as AdminImageController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+/*
 Route::get('/', function () {
     return view('welcome');
 });
-
-Route::get('/home', [HomeController::class, 'index'])->name("home_index");
+*/
+Route::get('/', [HomeController::class, 'index'])->name("home_index");
 
 /*deneme*/
-Route::post('/home/search', [HomeController::class, 'search'])->name("home_search");
-Route::get('/home/deneme2', [HomeController::class, 'package'])->name("home_package");
+Route::post('/search', [HomeController::class, 'search'])->name("home_search");
+Route::GET('/list', [HomeController::class, 'list'])->name("home_list");
+Route::get('/package/{pid}', [HomeController::class, 'package'])->name("home_package");
 /*deneme----*/
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
