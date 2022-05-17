@@ -7,6 +7,8 @@
     <script src="https://cdn.ckeditor.com/ckeditor5/34.0.0/classic/ckeditor.js"></script>
 @endsection
 
+@section('companyName',$dataSetting->company)
+
 @section('content')
 
     <div id="page-wrapper">
@@ -14,13 +16,11 @@
             <div class="row">
                 <div class="col-md-12">
                     <h1 class="page-head-line">Edit Package : {{$data->title}} </h1>
-                    <h1 class="page-subhead-line">This is dummy text , you can replace it with your original text. </h1>
-
                 </div>
             </div>
             <!-- /. ROW  -->
             <div class="row">
-                <div class="col-md-6 col-sm-6 col-xs-12">
+                <div class="col-md-12 col-sm-12 col-xs-12">
                     <div class="panel panel-info">
                         <div class="panel-heading">
                             BASIC FORM

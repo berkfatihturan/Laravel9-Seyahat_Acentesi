@@ -1,6 +1,10 @@
 @extends('layouts.frontbase')
 
-@section('title', 'Travel Agency')
+@section('title', $dataSettings->title)
+@section('description', $dataSettings->description)
+@section('keywords', $dataSettings->keywords)
+@section('icon', \Illuminate\Support\Facades\Storage::url($dataSettings->icon))
+
 
 @section('nagivation')
     @include("home.nagivation")
@@ -25,7 +29,7 @@
                             <h3>{{$rs->title}}</h3>
                             <span>{{$rs->nights}} nights </span>
                             <span class="price">{{$rs->price}}</span>
-                            <a class="btn btn-primary btn-outline" href="#">Book Now <i class="icon-arrow-right22"></i></a>
+                            <a class="btn btn-primary btn-outline" href="/package/{{$rs->id}}">Book Now <i class="icon-arrow-right22"></i></a>
                         </div>
                     </div>
                 </div>
@@ -48,7 +52,7 @@
 							</span>
                         <div class="feature-copy">
                             <h3>{{$rs->title}}</h3>
-                            <p>{{$rs->description}}</p>
+                            <p>{{$rs->keywords}}</p>
                             <p><a href="#">Learn More</a></p>
                         </div>
                     </div>

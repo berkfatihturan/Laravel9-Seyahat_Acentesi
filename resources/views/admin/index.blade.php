@@ -3,6 +3,8 @@
 
 @section('title', 'Admin Panel')
 
+@section('companyName',$dataSetting->company)
+
 @section('content')
 
     <div id="page-wrapper">

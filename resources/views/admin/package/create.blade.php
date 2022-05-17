@@ -7,6 +7,8 @@
     <script src="https://cdn.ckeditor.com/ckeditor5/34.0.0/classic/ckeditor.js"></script>
 @endsection
 
+@section('companyName',$dataSetting->company)
+
 @section('content')
 
     <div id="page-wrapper">

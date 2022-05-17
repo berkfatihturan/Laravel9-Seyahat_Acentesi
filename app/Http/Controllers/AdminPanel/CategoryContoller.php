@@ -4,6 +4,7 @@ namespace App\Http\Controllers\AdminPanel;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Setting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -34,8 +35,10 @@ class CategoryContoller extends Controller
     public function index()
     {
         $data = Category::all();
+        $dataSettings = Setting::first();
         return view('admin.category.index',[
-            'data'=>$data
+            'data'=>$data,
+            'dataSetting'=>$dataSettings
         ]);
     }
 
@@ -47,8 +50,10 @@ class CategoryContoller extends Controller
     public function create()
     {
         $data = Category::all();
+        $dataSettings = Setting::first();
         return view('admin.category.create',[
-            'data'=>$data
+            'data'=>$data,
+            'dataSetting'=>$dataSettings
         ]);
     }
 
@@ -83,8 +88,10 @@ class CategoryContoller extends Controller
     public function show(Category $category,$id)
     {
         $data = Category::find($id);
+        $dataSettings = Setting::first();
         return view('admin.category.show',[
-            'data'=>$data
+            'data'=>$data,
+            'dataSetting'=>$dataSettings
         ]);
     }
 
@@ -98,8 +105,10 @@ class CategoryContoller extends Controller
     {
         $data = Category::find($id);
         $dataList = Category::all();
+        $dataSettings = Setting::first();
         return view('admin.category.edit',[
-            'data'=>$data,'dataList'=>$dataList
+            'data'=>$data,'dataList'=>$dataList,
+            'dataSetting'=>$dataSettings
         ]);
     }
 

@@ -12,4 +12,6 @@
 <!-- CUSTOM SCRIPTS -->
 <script src="{{asset('assets')}}/admin/js/custom.js"></script>
 
-
+<script src="{{asset('assets')}}/admin/js/galleryCustom.js"></script>
+<script src="{{asset('assets')}}/admin/js/jquery.prettyPhoto.js"></script>
+<script src="{{asset('assets')}}/admin/js/jquery.mixitup.min.js"></script>

@@ -7,6 +7,10 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>@yield("title")</title>
+    <meta name="description" content="@yield("description")">
+    <meta name="keywords" content="@yield("keywords")">
+    <meta name="author" content="Berk Fatih Turan">
+    <link rel="icon" type="image/x-icon" href="@yield("icon")">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Free HTML5 Template by FREEHTML5.CO" />
     <meta name="keywords" content="free html5, free template, free bootstrap, html5, css3, mobile first, responsive" />
@@ -69,8 +73,6 @@
     <![endif]-->
 
     <script src="https://kit.fontawesome.com/5b8a026b90.js" crossorigin="anonymous"></script>
-
-
 
     @yield("head")
 </head>

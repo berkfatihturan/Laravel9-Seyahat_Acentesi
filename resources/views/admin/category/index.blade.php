@@ -3,6 +3,8 @@
 
 @section('title', 'Category List')
 
+@section('companyName',$dataSetting->company)
+
 @section('content')
 
     <div id="page-wrapper">
@@ -53,7 +55,7 @@
                                             </td>
                                             <td>{{$rs->status}}</td>
                                             <td> <a href="{{route('admin_category_edit',['id'=>$rs->id])}}" class="btn btn-block btn-info btn-sm">Edit</a> </td>
-                                            <td> <a href="{{route('admin_category_destroy',['id'=>$rs->id])}}" class="btn btn-block btn-danger btn-sm">Delete</a> </td>
+                                            <td> <a href="{{route('admin_category_destroy',['id'=>$rs->id])}}" class="btn btn-block btn-danger btn-sm">Delete</a></td>
                                             <td> <a href="{{route('admin_category_show',['id'=>$rs->id])}}" class="btn btn-block btn-success btn-sm">Show</a> </td>
                                         </tr>
                                     @endforeach

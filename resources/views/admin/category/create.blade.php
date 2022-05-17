@@ -3,6 +3,8 @@
 
 @section('title', 'Category ADD')
 
+@section('companyName',$dataSetting->company)
+
 @section('content')
 
     <div id="page-wrapper">
@@ -27,7 +29,7 @@
 
                                 <div class="form-group">
                                     <label>Parent Category</label>
-                                    <select class="form-control"  name="parent_id">
+                                    <select class="form-control"  name="parent_id" required>
                                         <option value="0"> Main Category</option>
                                         @foreach($data as $rs)
                                             <option value="{{$rs->id}}"> {{\App\Http\Controllers\AdminPanel\CategoryContoller::getParentsTree($rs,$rs->title)}} </option>
@@ -37,27 +39,27 @@
 
                                 <div class="form-group">
                                     <label>Title</label>
-                                    <input class="form-control" type="text" placeholder="Title" name="title">
+                                    <input class="form-control" type="text" placeholder="Title" name="title" required>
                                 </div>
 
                                 <div class="form-group">
                                     <label>Keywords</label>
-                                    <input class="form-control" type="text" placeholder="keywords" name="keywords">
+                                    <input class="form-control" type="text" placeholder="keywords" name="keywords" required>
                                 </div>
 
                                 <div class="form-group">
                                     <label>Description</label>
-                                    <input class="form-control" type="text" placeholder="Description" name="description">
+                                    <input class="form-control" type="text" placeholder="Description" name="description" required>
                                 </div>
 
                                 <div class="form-group">
                                     <label>Image</label>
-                                    <input class="form-control" type="file" name="image">
+                                    <input class="form-control" type="file" name="image" required>
                                 </div>
 
                                 <div class="form-group">
                                     <label>Status</label>
-                                    <select class="form-control" name="status">
+                                    <select class="form-control" name="status" required>
                                         <option>True</option>
                                         <option>False</option>
                                     </select>

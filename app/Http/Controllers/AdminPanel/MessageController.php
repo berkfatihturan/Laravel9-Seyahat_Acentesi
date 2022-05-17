@@ -4,27 +4,26 @@ namespace App\Http\Controllers\AdminPanel;
 
 use App\Http\Controllers\Controller;
 use App\Models\Image;
+use App\Models\Message;
 use App\Models\Package;
 use App\Models\Setting;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
-class ImageController extends Controller
+class MessageController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($pid)
+    public function index()
     {
-        $package = Package::find($pid);
-        $image = DB::table('images')->where('package_id',$pid)->get();
+        $data = Message::all();
         $dataSettings = Setting::first();
-        return view('admin.image.index',[
-            'image'=>$image,'package'=>$package,'cal'=>0,
-            'dataSetting'=>$dataSettings
+        return view('admin.message.index',[
+            'data'=>$data,
+            'dataSetting'=>$dataSettings,
         ]);
     }
 
@@ -33,9 +32,9 @@ class ImageController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request,$pid)
+    public function create()
     {
-
+        //
     }
 
     /**
@@ -44,17 +43,9 @@ class ImageController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request,$pid)
+    public function store(Request $request)
     {
-        $data = new Image();
-        $data->package_id=$pid;
-        $data->title=$request->title;
-        if($request->file('image')){
-            $data->image=$request->file('image')->store('images');
-        }
-
-        $data->save();
-        return redirect()->route('admin_image_index',['pid'=>$pid]);
+        //
     }
 
     /**
@@ -63,9 +54,15 @@ class ImageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($pid,$id)
+    public function show($id)
     {
-        //
+        $data = Message::find($id);
+        $data->status="Read";
+        $data->save();
+        return view('admin.message.show',[
+            'data'=>$data,
+        ]);
+
     }
 
     /**
@@ -74,9 +71,9 @@ class ImageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($pid,$id)
+    public function edit()
     {
-        //
+
     }
 
     /**
@@ -86,9 +83,14 @@ class ImageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,$pid,$id,)
+    public function update(Request $request, $id)
     {
-        //
+        $data =Message::find($id);
+        $data->note = $request->input('note');
+        $data->save();
+
+        return redirect(route('admin_message_show',['id'=>$data->id]));
+
     }
 
     /**
@@ -97,13 +99,10 @@ class ImageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($pid,$id)
+    public function destroy($id)
     {
-        $data=Image::find($id);
-        if ($data->image && Storage::disk('public')->exists($data->image)){
-            Storage::delete($data->image);
-        }
+        $data = Message::find($id);
         $data->delete();
-        return redirect()->route('admin_image_index',['pid'=>$pid]);
+        return redirect(route('admin_message_index'));
     }
 }

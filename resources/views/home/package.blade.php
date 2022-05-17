@@ -1,6 +1,9 @@
 @extends('layouts.frontbase')
 
 @section('title', $pack->title)
+@section('description', $dataSettings->description)
+@section('keywords', $dataSettings->keywords)
+@section('icon', \Illuminate\Support\Facades\Storage::url($dataSettings->icon))
 
 @section('head')
 
@@ -75,8 +78,8 @@
                 <div id="myCarousel" class="carousel slide" data-ride="carousel">
                     <div class="carousel-inner">
                         @foreach($data as $rs)
-                        <div class="carousel-item @if($counter==0) active @endif" data-slide-number="{{$counter++}}">
-                            <img src="{{\Illuminate\Support\Facades\Storage::url($rs->image)}}" class="d-block w-100" alt="..." data-type="image" data-toggle="lightbox" data-gallery="example-gallery">
+                        <div class="carousel-item @if($counter==0) active @endif" data-slide-number="{{$counter++}}" style="height: 65vh;">
+                            <img src="{{\Illuminate\Support\Facades\Storage::url($rs->image)}}" class="d-block w-100" alt="..." data-type="image" data-toggle="lightbox" data-gallery="example-gallery" style="object-fit: initial">
                         </div>
                         @endforeach
                     </div>

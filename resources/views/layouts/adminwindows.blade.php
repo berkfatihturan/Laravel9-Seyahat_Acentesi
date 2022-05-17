@@ -19,17 +19,13 @@
 </head>
 
 <body>
-    <div id="wrapper">
+<div id="wrapper">
 
-        @include("admin.header")
+    @yield('content')
 
-        @include("admin.sidebar")
+</div>
 
-        @yield('content')
-
-    </div>
-
-    @include("admin.footer")
-    @yield('foot')
+@include("admin.footer")
+@yield('foot')
 </body>
 

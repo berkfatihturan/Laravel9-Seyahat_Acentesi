@@ -1,6 +1,9 @@
 @extends('layouts.frontbase')
 
-@section('title', 'Travel Agency')
+@section('title', $dataSettings->title)
+@section('description', $dataSettings->description)
+@section('keywords', $dataSettings->keywords)
+@section('icon', \Illuminate\Support\Facades\Storage::url($dataSettings->icon))
 
 @section('head')
     <link rel="stylesheet" href="{{asset('assets')}}/css/search.css">

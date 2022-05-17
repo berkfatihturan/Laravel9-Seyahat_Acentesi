@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Image;
 use App\Models\Package;
+use App\Models\Setting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -40,8 +41,10 @@ class PackageController extends Controller
     public function index()
     {
         $data = Package::all();
+        $dataSettings = Setting::first();
         return view('admin.package.index',[
-            'data'=>$data
+            'data'=>$data,
+            'dataSetting'=>$dataSettings
         ]);
     }
 
@@ -53,8 +56,10 @@ class PackageController extends Controller
     public function create()
     {
         $data = Category::all();
+        $dataSettings = Setting::first();
         return view('admin.package.create',[
-            'data'=>$data
+            'data'=>$data,
+            'dataSetting'=>$dataSettings
         ]);
     }
 
@@ -96,8 +101,10 @@ class PackageController extends Controller
     public function show(Package $package,$id)
     {
         $data = Package::find($id);
+        $dataSettings = Setting::first();
         return view('admin.package.show',[
-            'data'=>$data
+            'data'=>$data,
+            'dataSetting'=>$dataSettings
         ]);
     }
 
@@ -111,8 +118,10 @@ class PackageController extends Controller
     {
         $data = Package::find($id);
         $dataList = Category::all();
+        $dataSettings = Setting::first();
         return view('admin.package.edit',[
-            'data'=>$data,'dataList'=>$dataList
+            'data'=>$data,'dataList'=>$dataList,
+            'dataSetting'=>$dataSettings
         ]);
     }
 

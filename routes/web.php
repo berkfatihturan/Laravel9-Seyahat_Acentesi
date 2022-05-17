@@ -6,7 +6,7 @@ use \App\Http\Controllers\AdminPanel\AdminHomeController as AdminHomeController;
 use \App\Http\Controllers\AdminPanel\CategoryContoller as AdminCategoryController;
 use \App\Http\Controllers\AdminPanel\PackageController as AdminPackageController;
 use \App\Http\Controllers\AdminPanel\ImageController as AdminImageController;
-
+use \App\Http\Controllers\AdminPanel\MessageController as AdminMessageController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,14 +21,18 @@ use \App\Http\Controllers\AdminPanel\ImageController as AdminImageController;
 Route::get('/', function () {
     return view('welcome');
 });
-*/
-Route::get('/', [HomeController::class, 'index'])->name("home_index");
+/* Home Page */
+Route::get('/', [HomeController::class, 'index'])->name("home");
+Route::get('/about', [HomeController::class, 'about'])->name("about");
+Route::get('/references',[HomeController::class, 'references'])->name("references");
+Route::get('/contact', [HomeController::class, 'contact'])->name("contact");
+Route::post('/storemessage', [HomeController::class, 'storemessage'])->name("storemessage");
 
-/*deneme*/
+/* Home Page */
 Route::post('/search', [HomeController::class, 'search'])->name("home_search");
-Route::GET('/list', [HomeController::class, 'list'])->name("home_list");
+Route::get('/list', [HomeController::class, 'list'])->name("home_list");
 Route::get('/package/{pid}', [HomeController::class, 'package'])->name("home_package");
-/*deneme----*/
+
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
@@ -39,6 +43,10 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 Route::prefix('admin')->name("admin_")->group(function (){
 
     Route::get('/',[AdminHomeController::class,'index'])->name('index');
+
+    /*Admin General Route */
+    Route::get('/setting',[AdminHomeController::class,'setting'])->name('setting');
+    Route::post('/setting/update',[AdminHomeController::class,'settingUpdate'])->name('setting_update');
 
     /* Admin Controller Panel Routes*/
     Route::prefix('/category')->name("category_")->controller(AdminCategoryController::class)->group(function (){
@@ -84,6 +92,20 @@ Route::prefix('admin')->name("admin_")->group(function (){
         Route::get('/update/{pid}/{id}', 'update')->name('update');
         /* -delete- */
         Route::get('/destroy/{pid}/{id}', 'destroy')->name('destroy');
+
+    });
+
+
+    /* Admin Message Panel Routes*/
+    Route::prefix('/message')->name("message_")->controller(AdminMessageController::class)->group(function (){
+
+        Route::get('/', 'index')->name('index');
+        /* -show- */
+        Route::get('/show/{id}', 'show')->name('show');
+        /* -update- */
+        Route::post('/update/{id}', 'update')->name('update');
+        /* -delete- */
+        Route::get('/destroy/{id}', 'destroy')->name('destroy');
 
     });
 });

@@ -3,6 +3,8 @@
 
 @section('title', 'Show '. $data->title)
 
+@section('companyName',$dataSetting->company)
+
 @section('content')
 
     <div id="page-wrapper">

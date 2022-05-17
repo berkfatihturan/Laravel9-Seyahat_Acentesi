@@ -3,6 +3,8 @@
 
 @section('title', 'Edit '. $data->title)
 
+@section('companyName',$dataSetting->company)
+
 @section('content')
 
     <div id="page-wrapper">
@@ -27,7 +29,7 @@
 
                                 <div class="form-group">
                                     <label>Parent Category</label>
-                                    <select class="form-control"  name="parent_id">
+                                    <select class="form-control"  name="parent_id" required>
                                         <option value="0"> Main Category</option>
                                         @foreach($dataList as $rs)
                                             <option value="{{$rs->id}}" @if($rs->id == $data->parent_id) selected @endif>
@@ -39,17 +41,17 @@
 
                                 <div class="form-group">
                                     <label>Title</label>
-                                    <input class="form-control" type="text" placeholder="Title" name="title" value="{{$data->title}}">
+                                    <input class="form-control" type="text" placeholder="Title" name="title" value="{{$data->title}}" required>
                                 </div>
 
                                 <div class="form-group">
                                     <label>Keywords</label>
-                                    <input class="form-control" type="text" placeholder="keywords" name="keywords" value="{{$data->keywords}}">
+                                    <input class="form-control" type="text" placeholder="keywords" name="keywords" value="{{$data->keywords}}" required>
                                 </div>
 
                                 <div class="form-group">
                                     <label>Description</label>
-                                    <input class="form-control" type="text" placeholder="Description" name="description" value="{{$data->description}}">
+                                    <input class="form-control" type="text" placeholder="Description" name="description" value="{{$data->description}}" required>
                                 </div>
 
                                 <div class="form-group">
@@ -59,7 +61,7 @@
 
                                 <div class="form-group">
                                     <label>Status</label>
-                                    <select class="form-control" name="status">
+                                    <select class="form-control" name="status" required>
                                         <option selected>{{$data->status}}</option>
                                         <option>True</option>
                                         <option>False</option>

@@ -1,4 +1,4 @@
-<        <!-- /. NAV TOP  -->
+<!-- /. NAV TOP  -->
 <nav class="navbar-default navbar-side" role="navigation">
     <div class="sidebar-collapse">
         <ul class="nav" id="main-menu">
@@ -51,11 +51,11 @@
             </li>
 
             <li>
-                <a  href="/admin/messages"><i class="fa fa-dashboard "></i>Messages</a>
+                <a  href="{{route('admin_message_index')}}"><i class="fa fa-dashboard "></i>Messages</a>
             </li>
 
             <li>
-                <a  href="/admin/setings"><i class="fa fa-dashboard "></i>Settings</a>
+                <a  href="/admin/setting"><i class="fa fa-dashboard "></i>Settings</a>
             </li>
 
         </ul>
