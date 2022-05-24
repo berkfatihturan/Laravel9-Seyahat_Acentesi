@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\AdminPanel;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\Image;
 use App\Models\Package;
 use App\Models\Setting;
@@ -49,6 +50,7 @@ class ImageController extends Controller
         $data = new Image();
         $data->package_id=$pid;
         $data->title=$request->title;
+        $data->slider_text=$request->slider_text;
         if($request->file('image')){
             $data->image=$request->file('image')->store('images');
         }
@@ -60,12 +62,20 @@ class ImageController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($pid,$id)
+    public function show()
     {
-        //
+        $slider=Package::where('category_id',99)->get();
+        $image = DB::table('images')->where('package_id',99)->get();
+        $data = Image::find($id);
+
+        return redirect()->route('admin_mainStyleSetting',[
+            'slider'=>$slider,
+            'image'=>$image,
+            'cal'=>0,
+            'showImage'=>$data,
+        ]);
     }
 
     /**
@@ -74,9 +84,9 @@ class ImageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($pid,$id)
+    public function edit(Request $request,$id)
     {
-        //
+
     }
 
     /**
@@ -86,9 +96,20 @@ class ImageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,$pid,$id,)
+    public function update(Request $request,$id,)
     {
-        //
+        $data = Image::find($id);
+        $data->title = $request->title;
+        $data->slider_text = $request->slider_text;
+        if ($request->file('image')){
+            $data->image=$request->file('image')->store('images');
+        }
+        $data->save();
+
+        $showImage=Image::find($id);
+        return redirect()->route('admin_mainStyleSetting',[
+            'id'=>$showImage
+        ]);
     }
 
     /**

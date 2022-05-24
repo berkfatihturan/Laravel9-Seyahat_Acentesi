@@ -1,0 +1,169 @@
+body{
+    width: 100%;
+}
+.crousel-item-index{
+    margin: 0;
+    height: 100%;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-size: 100% 100%;
+    position: relative;
+}
+
+.crousel-item-index__detail{
+    margin-left: calc(100% - 63vw);
+
+    position:relative;
+}
+
+.crousel-item-index__img{
+    position: absolute;
+    top:131px;
+    margin-left: calc(100% - 80vw);
+}
+
+
+
+/***/
+
+.fh5co-cover .desc {
+    top: 40%;
+    position: absolute;
+    margin-top: -80px;
+    z-index: 2;
+    color: #fff;
+}
+@media screen and (max-width: 768px) {
+    .fh5co-cover .desc {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+}
+.fh5co-cover .desc h2 {
+    color: #fff;
+    font-size: 60px;
+    margin-bottom: 10px;
+    font-weight: 400 !important;
+}
+@media screen and (max-width: 768px) {
+    .fh5co-cover .desc h2 {
+        font-size: 40px;
+    }
+}
+.fh5co-cover .desc h3 {
+    font-size: 1.75rem!important;
+    color: #fff;
+    margin-bottom: 30px;
+}
+.fh5co-cover .desc p {
+    display: block;
+    margin-bottom: 30px;
+    font-size: 16px;
+    letter-spacing: 1px;
+    color: rgba(255, 255, 255, 0.7);
+}
+.fh5co-cover .desc p a {
+    color: #fff;
+}
+.fh5co-cover .desc p a:hover, .fh5co-cover .desc p a:focus {
+    color: #fff !important;
+}
+.fh5co-cover .desc p a:hover.btn, .fh5co-cover .desc p a:focus.btn {
+    border: 2px solid #fff !important;
+    background: transparent !important;
+}
+.fh5co-cover .desc p a.fh5co-site-name {
+    padding-bottom: 2px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.7);
+}
+.fh5co-cover .desc .price {
+    font-size: 60px;
+    font-weight: bold;
+}
+@media screen and (max-width: 768px) {
+    .fh5co-cover .desc .desc2 {
+        display: none;
+    }
+}
+
+.fh5co-tours > div .desc {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 30px;
+    z-index: 12;
+    -webkit-transition: 0.3s;
+    -o-transition: 0.3s;
+    transition: 0.3s;
+}
+.fh5co-tours > div .desc h3 {
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    opacity: 1;
+    font-size: 30px;
+    font-weight: 400;
+    visibility: visible;
+    margin-bottom: 5px;
+    -webkit-transition: 0.3s;
+    -o-transition: 0.3s;
+    transition: 0.3s;
+}
+.fh5co-tours > div .desc span {
+    display: inline-block;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 5px;
+}
+.fh5co-tours > div .desc .price {
+    font-size: 30px;
+    font-weight: bold;
+    color: #fff;
+}
+price{
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+    font-size: 30px;
+    font-weight: bold;
+    color: #fff;
+}
+
+.fh5co-tours > div .desc .btn {
+    opacity: 1;
+    border: 2px solid #fff !important;
+    color: #fff !important;
+    letter-spacing: 1px !important;
+    font-weight: 400 !important;
+}
+.fh5co-tours > div .desc .btn:hover, .fh5co-tours > div .desc .btn:focus, .fh5co-tours > div .desc .btn:active {
+    border: 2px solid #F78536 !important;
+    background: #F78536 !important;
+    color: #fff !important;
+}
+
+.flight-book .desc {
+    width: 60%;
+    float: right;
+    background: #00AD7C;
+    padding: 6px 20px;
+}
+.flight-book .desc .left {
+    float: left;
+}
+.flight-book .desc h4, .flight-book .desc span {
+    color: #fff;
+}
+.flight-book .desc h4 {
+    margin-bottom: 0;
+}
+.flight-book .desc .right {
+    float: right;
+    font-size: 25px;
+}
+.flight-book .desc .right i {
+    font-weight: 300;
+}
+.flight-book .desc .right .price {
+    font-weight: bold!important;
+}
+

@@ -36,6 +36,17 @@ class CategoryContoller extends Controller
     {
         $data = Category::all();
         $dataSettings = Setting::first();
+
+        /*Main Slider Category*/
+        if(Category::find(99)==null){
+            $dataNavCategory = new Category();
+            $dataNavCategory->id = 99;
+            $dataNavCategory->parent_id = 0;
+            $dataNavCategory->title = 'Main Slider';
+            $dataNavCategory->status = 'True';
+            $dataNavCategory->save();
+        }
+
         return view('admin.category.index',[
             'data'=>$data,
             'dataSetting'=>$dataSettings

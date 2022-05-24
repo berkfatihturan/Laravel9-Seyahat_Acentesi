@@ -3,14 +3,12 @@
 namespace App\Http\Controllers\AdminPanel;
 
 use App\Http\Controllers\Controller;
-use App\Models\Image;
+use App\Models\Comment;
 use App\Models\Message;
-use App\Models\Package;
 use App\Models\Setting;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 
-class MessageController extends Controller
+class CommentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,9 +17,9 @@ class MessageController extends Controller
      */
     public function index()
     {
-        $data = Message::all();
+        $data = Comment::all();
         $dataSettings = Setting::first();
-        return view('admin.message.index',[
+        return view('admin.comment.index',[
             'data'=>$data,
             'dataSetting'=>$dataSettings,
         ]);
@@ -56,9 +54,9 @@ class MessageController extends Controller
      */
     public function show($id)
     {
-        $data = Message::find($id);
+        $data = Comment::find($id);
         $data->save();
-        return view('admin.message.show',[
+        return view('admin.comment.show',[
             'data'=>$data,
         ]);
 
@@ -70,9 +68,9 @@ class MessageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit()
+    public function edit($id)
     {
-
+        //
     }
 
     /**
@@ -84,12 +82,11 @@ class MessageController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data =Message::find($id);
-        $data->note = $request->input('note');
+        $data =Comment::find($id);
+        $data->status = $request->input('status');
         $data->save();
 
-        return redirect(route('admin_message_show',['id'=>$data->id]));
-
+        return redirect(route('admin_comment_show',['id'=>$data->id]));
     }
 
     /**
@@ -100,8 +97,8 @@ class MessageController extends Controller
      */
     public function destroy($id)
     {
-        $data = Message::find($id);
+        $data = Comment::find($id);
         $data->delete();
-        return redirect(route('admin_message_index'));
+        return redirect(route('admin_comment_index'));
     }
 }

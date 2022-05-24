@@ -3,14 +3,15 @@
 namespace App\Http\Controllers\AdminPanel;
 
 use App\Http\Controllers\Controller;
-use App\Models\Image;
+use App\Models\Comment;
 use App\Models\Message;
-use App\Models\Package;
+use App\Models\Role;
+use App\Models\RoleUser;
 use App\Models\Setting;
+use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 
-class MessageController extends Controller
+class AdminUserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,11 +20,13 @@ class MessageController extends Controller
      */
     public function index()
     {
-        $data = Message::all();
-        $dataSettings = Setting::first();
-        return view('admin.message.index',[
+        $data=User::all();
+
+        $dataSetting = Setting::first();
+        return view('admin.user.index',[
             'data'=>$data,
-            'dataSetting'=>$dataSettings,
+            'dataSetting'=>$dataSetting,
+
         ]);
     }
 
@@ -56,12 +59,12 @@ class MessageController extends Controller
      */
     public function show($id)
     {
-        $data = Message::find($id);
-        $data->save();
-        return view('admin.message.show',[
+        $data = User::find($id);
+        $roles=Role::all();
+        return view('admin.user.show',[
             'data'=>$data,
+            'roles'=>$roles,
         ]);
-
     }
 
     /**
@@ -70,9 +73,9 @@ class MessageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit()
+    public function edit($id)
     {
-
+        //
     }
 
     /**
@@ -84,12 +87,24 @@ class MessageController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data =Message::find($id);
-        $data->note = $request->input('note');
+        //
+    }
+
+    public function addRole(Request $request, $id)
+    {
+        $data = new RoleUser();
+        $data->user_id=$id;
+        $data->role_id=$request->role;
         $data->save();
 
-        return redirect(route('admin_message_show',['id'=>$data->id]));
+        return redirect(route('admin_user_show',['id'=>$id]));
+    }
 
+    public function deleteRole($rid,$uid)
+    {
+        $data = User::find($uid);
+        $data->roles()->detach($rid);
+        return redirect(route('admin_user_show',['id'=>$uid]));
     }
 
     /**
@@ -100,8 +115,9 @@ class MessageController extends Controller
      */
     public function destroy($id)
     {
-        $data = Message::find($id);
+        $data = User::find($id);
+        $data->roles()->detach();
         $data->delete();
-        return redirect(route('admin_message_index'));
+        return "ok";
     }
 }

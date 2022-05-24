@@ -7,14 +7,16 @@
 }
 /* =======================================================
 *
-* 	Template Style 
+* 	Template Style
 *	Edit this section
 *
 * ======================================================= */
+
+
 body {
   font-family: "Open Sans", Arial, sans-serif;
   line-height: 1.6;
-  font-size: 16px;
+  font-size: 16px !important;
   background: #fff;
   color: #848484;
   font-weight: 300;
@@ -1978,3 +1980,14 @@ div.cs-select span {
 }
 
 /*# sourceMappingURL=style.css.map */
+
+.form-control{
+    font-size: 14px!important;
+}
+
+price{
+
+    font-size: 60px!important;
+    font-weight: bold;
+    color: #fff;
+}

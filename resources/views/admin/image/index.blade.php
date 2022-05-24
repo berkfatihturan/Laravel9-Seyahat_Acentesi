@@ -4,6 +4,10 @@
 
 @section('companyName',$dataSetting->company)
 
+@section('head')
+    <script src="https://cdn.ckeditor.com/ckeditor5/34.0.0/classic/ckeditor.js"></script>
+@endsection
+
 @section('content')
     <div id="page-wrapper">
         <div id="page-inner">
@@ -31,6 +35,12 @@
                             <label>Image</label>
                             <input class="form-control" type="file" name="image" required>
                         </div>
+                        @if($package->id==99)
+                        <div class="form-group" class="dropdown-item">
+                            <label>Image Slıder Detail</label>
+                            <textarea class="form-control editor" name="slider_text"></textarea>
+                        </div>
+                        @endif
 
                         <button type="submit" class="btn btn-info">Save</button>
 
@@ -76,5 +86,13 @@
 @endsection
 
 @section('foot')
+    <script>
+
+        const allEditors = document.querySelectorAll('.editor');
+        for (let i = 0; i < allEditors.length; ++i) {
+            ClassicEditor.create(allEditors[i]);
+        }
+
+    </script>
 @endsection
 

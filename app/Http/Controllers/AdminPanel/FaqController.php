@@ -3,14 +3,13 @@
 namespace App\Http\Controllers\AdminPanel;
 
 use App\Http\Controllers\Controller;
-use App\Models\Image;
-use App\Models\Message;
+use App\Models\Category;
+use App\Models\Faq;
 use App\Models\Package;
 use App\Models\Setting;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 
-class MessageController extends Controller
+class FaqController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,11 +18,11 @@ class MessageController extends Controller
      */
     public function index()
     {
-        $data = Message::all();
+        $data = Faq::all();
         $dataSettings = Setting::first();
-        return view('admin.message.index',[
+        return view('admin.faq.index',[
             'data'=>$data,
-            'dataSetting'=>$dataSettings,
+            'dataSetting'=>$dataSettings
         ]);
     }
 
@@ -34,7 +33,10 @@ class MessageController extends Controller
      */
     public function create()
     {
-        //
+        $dataSettings = Setting::first();
+        return view('admin.faq.create',[
+            'dataSetting'=>$dataSettings
+        ]);
     }
 
     /**
@@ -45,7 +47,12 @@ class MessageController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = new Faq();
+        $data->question = $request->question;
+        $data->answer = $request->answer;
+        $data->status = $request->status;
+        $data->save();
+        return redirect('admin/faq');
     }
 
     /**
@@ -56,11 +63,6 @@ class MessageController extends Controller
      */
     public function show($id)
     {
-        $data = Message::find($id);
-        $data->save();
-        return view('admin.message.show',[
-            'data'=>$data,
-        ]);
 
     }
 
@@ -70,9 +72,14 @@ class MessageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit()
+    public function edit($id)
     {
-
+        $data = Faq::find($id);
+        $dataSettings = Setting::first();
+        return view('admin.faq.edit',[
+            'data'=>$data,
+            'dataSetting'=>$dataSettings
+        ]);
     }
 
     /**
@@ -84,12 +91,12 @@ class MessageController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data =Message::find($id);
-        $data->note = $request->input('note');
+        $data = Faq::find($id);
+        $data->question = $request->question;
+        $data->answer = $request->answer;
+        $data->status = $request->status;
         $data->save();
-
-        return redirect(route('admin_message_show',['id'=>$data->id]));
-
+        return redirect('admin/faq');
     }
 
     /**
@@ -100,8 +107,6 @@ class MessageController extends Controller
      */
     public function destroy($id)
     {
-        $data = Message::find($id);
-        $data->delete();
-        return redirect(route('admin_message_index'));
+        //
     }
 }

@@ -35,11 +35,15 @@
                                 </div>
                             </div>
                             <div class="panel-body">
-                                <div class="package-image col-md-3">
+                                <div class="package-image col-md-3" style="position: relative">
+                                    <div class="btn btn-primary clearfix" style="float: left; margin-right: 10px; padding: 6px; font-weight:600; font-size: 15px; position: absolute; top:5px;left:5px; ">
+                                        {{number_format($rs->comment->average('rate'),1)}}
+                                    </div>
+
                                     <img src="{{\Illuminate\Support\Facades\Storage::url($rs->image)}}" class="d-block w-100" alt="..." data-type="image" data-toggle="lightbox" data-gallery="example-gallery">
                                 </div>
                                 <div class="package-descriptions col-md-6">
-                                    <div class="package-descriptions__item">
+                                    <div class="package-descriptions__item" style="height: 10vh; overflow: hidden">
                                         <p>{{$rs->descriptions}}</p>
                                     </div>
                                 </div>

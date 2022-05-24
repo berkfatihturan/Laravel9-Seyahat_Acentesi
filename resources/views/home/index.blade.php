@@ -10,6 +10,11 @@
     @include("home.nagivation")
 @endsection
 
+@section('head')
+    <link rel="stylesheet" href="{{asset('assets')}}/css/index.css">
+
+@endsection
+
 @section('content')
 
     <div id="fh5co-tours" class="fh5co-section-gray">

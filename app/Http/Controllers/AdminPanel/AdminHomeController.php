@@ -3,16 +3,28 @@
 namespace App\Http\Controllers\AdminPanel;
 
 use App\Http\Controllers\Controller;
+use App\Models\Image;
 use App\Models\Package;
 use App\Models\Setting;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
+
 
 class AdminHomeController extends Controller
 {
-
     public function index(){
 
         $dataSettings = Setting::first();
+
+        if ($dataSettings==null){
+            $dataSettings = new Setting();
+            $dataSettings->company ='Your Company';
+            $dataSettings->title = 'Project Title';
+            $dataSettings->save();
+            $dataSettings = Setting::first();
+        }
 
         return view('admin.index',[
             'dataSetting'=>$dataSettings
@@ -25,6 +37,7 @@ class AdminHomeController extends Controller
 
         if ($data==null){
             $data = new Setting();
+            $data->company ='Your Company';
             $data->title = 'Project Title';
             $data->save();
             $data = Setting::first();
@@ -67,5 +80,52 @@ class AdminHomeController extends Controller
         $data->save();
 
         return redirect()->route('admin_setting');
+    }
+
+    /* -login- */
+
+
+    public function logout(Request $request){
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect('/');
+    }
+
+    public function loginAdmincheck(Request $request){
+        $credentials = $request->validate([
+            'email'=>['required','email'],
+            'password'=>['required'],
+        ]);
+
+        if (Auth::attempt($credentials)){
+            $request->session()->regenerate();
+            return redirect()->intended('/admin');
+        }
+
+        return back()->withErrors([
+           'error'=>'The provided credentials do not match our record.',
+        ])->onlyInput('email');
+    }
+
+    /*deneme*/
+
+    public function mainStyleSetting($id){
+        $slider=Package::where('category_id',99)->get();
+        $image = DB::table('images')->where('package_id',99)->get();
+        $showImage=Image::find($id);
+        return view('admin.main-style-setting',[
+            'slider'=>$slider,
+            'image'=>$image,
+            'cal'=>0,
+            'showImage'=>$showImage,
+        ]);
+    }
+
+    public function mainStyleSetting_Show($id){
+        $img=Image::find($id);
+        return view('admin.main-style-setting_show',[
+            'img'=>$img,
+        ]);
     }
 }

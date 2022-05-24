@@ -3,8 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Comment;
+use App\Models\Faq;
+use App\Models\Image;
 use App\Models\Message;
 use App\Models\Setting;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Models\Package;
 use Illuminate\Http\Request;
@@ -13,13 +17,16 @@ class HomeController extends Controller
 {
     public function index(){
         $data = Package::all();
+        $dataNavImage=Package::where('category_id', '=', 99)->get();
         $dataCategory = Category::where('parent_id', '=', 0)->limit(4)->get();
         $dataSettings = Setting::first();
         return view('home.index',[
             'data'=>$data,
             'dataCategory'=>$dataCategory,
             'dataSettings'=>$dataSettings,
-            'page'=>"home"
+            'page'=>"home",
+            'dataNavImage'=>$dataNavImage,
+            'cnt'=>0,
         ]);
     }
 
@@ -48,6 +55,7 @@ class HomeController extends Controller
         $pack= Package::find($pid);
         $dataSettings = Setting::first();
         $data = DB::table('images')->where('package_id',$pid)->get();
+        $dataComment= Comment::where('package_id', '=', $pid)->where('status','True')->get();
         return view('home.package',[
             'data'=>$data,
             'counter'=>0,
@@ -55,6 +63,7 @@ class HomeController extends Controller
             'pack'=>$pack,
             'dataSettings'=>$dataSettings,
             'page'=>"package",
+            'dataComment'=>$dataComment,
         ]);
     }
 
@@ -67,8 +76,10 @@ class HomeController extends Controller
     }
 
     public function about(){
+        $data = Package::all();
         $dataSettings = Setting::first();
         return view('home.about',[
+            'data'=>$data,
             'dataSettings'=>$dataSettings,
             'page'=>"about",
 
@@ -78,6 +89,7 @@ class HomeController extends Controller
     public function contact(){
         $dataSettings = Setting::first();
         return view('home.contact',[
+
             'dataSettings'=>$dataSettings,
             'page'=>"contact",
         ]);
@@ -94,6 +106,29 @@ class HomeController extends Controller
         $data->save();
 
         return redirect()->route('contact')->with('info','Your message has been sent , Thank You. ');
+    }
+
+    public function faq(){
+        $data= Faq::all();
+        $dataSettings = Setting::first();
+        return view('home.faq',[
+            'data'=>$data,
+            'dataSettings'=>$dataSettings,
+            'page'=>"faq",
+        ]);
+    }
+
+    public function packagecomment(Request $request){
+        $data = new Comment();
+        $data->user_id = Auth::id();
+        $data->package_id = $request->input('package_id');
+        $data->subject=$request->input('subject');
+        $data->comment=$request->input('comment');
+        $data->rate=$request->input('rate');
+        $data->ip=request()->ip();
+        $data->save();
+
+        return redirect()->route('home_package',['pid'=>$request->input('package_id')])->with('info','Your comment has been sent , Thank You. ');
     }
 
 

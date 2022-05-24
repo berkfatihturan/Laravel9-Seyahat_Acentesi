@@ -7,27 +7,26 @@
             <!-- START #fh5co-menu-wrap -->
             <nav id="fh5co-menu-wrap" role="navigation">
                 <ul class="sf-menu" id="fh5co-primary-menu">
-                    <li class="@if($page=='home') active @endif"><a href="{{route('home')}}">Home</a></li>
+                    <li class="@if($page=='home') active @endif">
+                        <a href="{{route('home')}}">Home</a>
+                    </li>
+
                     <li class="@if($page=='packages') active @endif">
                         <a href="vacation.html" class="fh5co-sub-ddown active">Packages</a>
                         <ul class="fh5co-sub-menu">
-                            <li><a href="#">Family</a>
-                                <ul class="fh5co-sub-menu list-inline">
-                                    <li>
-                                        <div class="row">
-                                            <div class="col-md-4">
+                            <li>
+                                <a href="#">Family</a>
+                                <ul class="fh5co-sub-menu list-inline" style="width: 500px; height: 400px;">
+                                    <li style="width: 100%">
+
+                                        <div class="row" style="width: 100%">
+                                            <div class="col-sm-4"style="">
                                                 <h3>Deneme</h3>
                                             </div>
-                                            <div class="col-md-4">.col-md-4</div>
-                                            <div class="col-md-4">.col-md-4</div>
+                                            <div class="col-sm-4">.col-md-4</div>
+                                            <div class="col-sm-4">.col-md-4</div>
                                         </div>
-                                    </li>
-                                    <li>
-                                        <div class="row">
-                                            <div class="col-md-4">.col-md-4</div>
-                                            <div class="col-md-4">.col-md-4</div>
-                                            <div class="col-md-4">.col-md-4</div>
-                                        </div>
+
                                     </li>
                                 </ul>
                             </li>
@@ -37,11 +36,27 @@
                             <li><a href="#">Django &amp; Python</a></li>
                         </ul>
                     </li>
+
                     <li><a href="flight.html">Flights</a></li>
                     <li><a href="hotel.html">Hotel</a></li>
                     <li class="@if($page=='references') active @endif"><a href="{{route('references')}}">References</a></li>
                     <li class="@if($page=='about') active @endif"><a href="{{route('about')}}">About Us</a></li>
                     <li class="@if($page=='contact') active @endif"><a href="{{route('contact')}}">Contact</a></li>
+                    <li>
+                        <a href="@if(Auth::check()) /admin @else /loginadmin @endif" class="fh5co-sub-ddown active" style="padding-top: 10px!important;">
+                            @if(\Illuminate\Support\Facades\Auth::check())
+                            <span>{{Auth::user()->name}}</span>
+                            @else
+                            <span style="padding-right: 8px">Login</span>
+                            @endif
+                            <i class="fa-solid fa-user "style="font-size: 12px; color:white;padding: 10px; background-color: #F78536; border-radius: 50%"></i>
+                        </a>
+                        <ul class="fh5co-sub-menu">
+                            <li><a href="/admin"><i class="fa-solid fa-id-badge"></i> My Account</a></li>
+                            <li><a href="#"><i class="fa-light fa-book-arrow-right"></i>Rezarvation</a></li>
+                            <li><a href="/logoutuser"><i class="fa-solid fa-arrow-right-from-bracket"></i> Log Out</a></li>
+                        </ul>
+                    </li>
                 </ul>
             </nav>
         </div>

@@ -7,12 +7,12 @@
 
     100% To use For Personal And Commercial Use.
     IN EXCHANGE JUST GIVE US CREDITS AND TELL YOUR FRIENDS ABOUT US
-   
+
     ========================================================  */
 
 
 /*==============================================
-    BASIC  STYLES    
+    BASIC  STYLES
     =============================================*/
 body {
     font-family: 'Open Sans', sans-serif;
@@ -60,7 +60,7 @@ body {
 
 
 /*==============================================
-    MENU STYLES    
+    MENU STYLES
     =============================================*/
 
 
@@ -213,7 +213,7 @@ body {
     margin-right: 10px;
 }
 /*==============================================
-    FOOTER  STYLES    
+    FOOTER  STYLES
     =============================================*/
 #footer-sec {
     background-color:#000;
@@ -230,7 +230,7 @@ body {
         text-decoration:none;
     }
 /*==============================================
-    MEDIA QUERIES     
+    MEDIA QUERIES
     =============================================*/
 
 @media (min-width:768px) {
