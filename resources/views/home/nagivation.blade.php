@@ -18,7 +18,7 @@
                         @foreach($rs->images as $img)
                             <div  class="carousel-item @if($cnt++==0) active @endif" style="height: 100%">
                                 <div  class="crousel-item-index row" style="background-image:url({{\Illuminate\Support\Facades\Storage::url($img->image)}})">
-                                    <div  class="crousel-item-index__detail col-sm-6 col-sm-push-1 col-md-6 col-md-push-1 desc" style="">
+                                    <div  class="crousel-item-index__detail col-sm-6 col-sm-push-1 col-md-6 col-md-push-1 desc" style="z-index: 3">
                                         {!! $img->slider_text !!}
                                     </div>
                                 </div><!--<img class="d-block w-100" style="height: 100%;width: 100%" src="{{\Illuminate\Support\Facades\Storage::url($img->image)}}" alt="First slide">-->

@@ -38,7 +38,7 @@
                     </li>
 
                     <li><a href="flight.html">Flights</a></li>
-                    <li><a href="hotel.html">Hotel</a></li>
+                    <li><a href="/faq">FAQ</a></li>
                     <li class="@if($page=='references') active @endif"><a href="{{route('references')}}">References</a></li>
                     <li class="@if($page=='about') active @endif"><a href="{{route('about')}}">About Us</a></li>
                     <li class="@if($page=='contact') active @endif"><a href="{{route('contact')}}">Contact</a></li>
