@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\AdminPanel\AdminHomeController as AdminHomeController;
 use \App\Http\Controllers\AdminPanel\CategoryContoller as AdminCategoryController;
@@ -54,9 +55,9 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 /* Admin Panel Routes*/
 Route::middleware(['auth'])->group(function (){
 
-    Route::middleware(['userpanel'])->prefix('userpanel')->name('userpanel_')->group(function (){
+    Route::prefix('userpanel')->name('userpanel_')->controller(UserController::class)->group(function (){
 
-        Route::get('/',[AdminHomeController::class,'index'])->name('index');
+        Route::get('/','index')->name('index');
 
     });
 

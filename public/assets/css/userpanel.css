@@ -1,0 +1,30 @@
+.sub-menu{
+}
+
+.sub-menu__item{
+    margin-bottom: 10px;
+    padding: 10px 0 10px 0;
+    font-weight: bold;
+    font-size: 22px;
+    border-bottom: 1px solid black;
+}
+
+.sub-menu__item:hover{
+    border-color: #F78536;
+}
+
+
+.sub-menu__item i{
+    padding-right: 10px;
+}
+
+.sub-menu__item:hover a,
+.sub-menu__item:hover i{
+    color: #F78536!important;
+    text-decoration: none;
+
+}
+
+.user-text{
+    margin-bottom: 100px;
+}

@@ -68,4 +68,13 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Role::class,'role_users');
     }
+
+    public function isAdmin()
+    {
+        return RoleUser::where([
+            ['user_id','=',$this->id],
+            ['role_id','=',1],
+        ])->exists();
+
+    }
 }

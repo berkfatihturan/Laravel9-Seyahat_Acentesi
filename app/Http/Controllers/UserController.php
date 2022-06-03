@@ -1,17 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\AdminPanel;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use App\Models\Comment;
-use App\Models\Message;
-use App\Models\Role;
-use App\Models\RoleUser;
 use App\Models\Setting;
-use App\Models\User;
 use Illuminate\Http\Request;
 
-class AdminUserController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,12 +14,11 @@ class AdminUserController extends Controller
      */
     public function index()
     {
-        $data=User::all();
-        $dataSetting = Setting::first();
-        return view('admin.user.index',[
-            'data'=>$data,
-            'dataSetting'=>$dataSetting,
+        $dataSettings = Setting::first();
 
+        return view('home.user.index',[
+            'dataSettings'=>$dataSettings,
+            'page'=>'User'
         ]);
     }
 
@@ -58,12 +51,7 @@ class AdminUserController extends Controller
      */
     public function show($id)
     {
-        $data = User::find($id);
-        $roles=Role::all();
-        return view('admin.user.show',[
-            'data'=>$data,
-            'roles'=>$roles,
-        ]);
+        //
     }
 
     /**
@@ -89,23 +77,6 @@ class AdminUserController extends Controller
         //
     }
 
-    public function addRole(Request $request, $id)
-    {
-        $data = new RoleUser();
-        $data->user_id=$id;
-        $data->role_id=$request->role;
-        $data->save();
-
-        return redirect(route('admin_user_show',['id'=>$id]));
-    }
-
-    public function deleteRole($rid,$uid)
-    {
-        $data = User::find($uid);
-        $data->roles()->detach($rid);
-        return redirect(route('admin_user_show',['id'=>$uid]));
-    }
-
     /**
      * Remove the specified resource from storage.
      *
@@ -114,9 +85,6 @@ class AdminUserController extends Controller
      */
     public function destroy($id)
     {
-        $data = User::find($id);
-        $data->roles()->detach();
-        $data->delete();
-        return "ok";
+        //
     }
 }
