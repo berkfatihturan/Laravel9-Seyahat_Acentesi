@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Comment;
 use App\Models\Setting;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -21,6 +23,19 @@ class UserController extends Controller
             'page'=>'User'
         ]);
     }
+
+    public function comments()
+    {
+        $dataSettings = Setting::first();
+        $comments = Comment::where('user_id','=',Auth::id())->get();
+
+        return view('home.user.comments',[
+            'dataSettings'=>$dataSettings,
+            'page'=>'comment',
+            'comments'=>$comments,
+        ]);
+    }
+
 
     /**
      * Show the form for creating a new resource.

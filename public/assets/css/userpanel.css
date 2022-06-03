@@ -1,7 +1,9 @@
 .sub-menu{
+    padding: 0;
 }
 
 .sub-menu__item{
+
     margin-bottom: 10px;
     padding: 10px 0 10px 0;
     font-weight: bold;
@@ -13,9 +15,12 @@
     border-color: #F78536;
 }
 
-
 .sub-menu__item i{
     padding-right: 10px;
+}
+
+.sub-menu__item a{
+    color: #848484;
 }
 
 .sub-menu__item:hover a,
@@ -27,4 +32,8 @@
 
 .user-text{
     margin-bottom: 100px;
+}
+
+.active{
+    color: #F78536!important;
 }

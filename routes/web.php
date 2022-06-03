@@ -58,7 +58,8 @@ Route::middleware(['auth'])->group(function (){
     Route::prefix('userpanel')->name('userpanel_')->controller(UserController::class)->group(function (){
 
         Route::get('/','index')->name('index');
-
+        Route::get('/comments','comments')->name('comments');
+        Route::get('/commentsDestroy/{id}','commentsdestroy')->name('commentsdestroy');
     });
 
 
