@@ -27,11 +27,14 @@
             <div class="col-md-10 user-text">
                 <h3 style="margin-bottom: 40px;margin-top: 20px;">Your Comments</h3>
                 @foreach($comments as $cmt)
+
                     <div class="col-md-12 mb-2">
                         <div class="media g-mb-30 media-comment">
+
                             <img class="d-flex g-width-50 g-height-50 rounded-circle g-mt-3 g-mr-15" src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Image Description">
                             <div class="media-body u-shadow-v18 g-bg-secondary g-pa-30">
                                 <div class="g-mb-15">
+                                    <h4 style="border-bottom: 1px solid #848484"><a href="{{route('home_package',['pid'=>$cmt->package_id])}}">{{$cmt->package->title}}</a></h4>
                                     <div class="star-rating pull-right">
                                         <span class="fa fa-star checked"></span>
                                         <span class="fa fa-star @if($cmt->rate>1) checked @endif"></span>
@@ -47,6 +50,31 @@
                                     <h4 style="font-weight: 600; margin-top: 10px">{{$cmt->subject}}</h4>
                                     <p>{{$cmt->comment}}</p>
                                 </div>
+
+                                <ul class="list-inline d-sm-flex my-0">
+                                    <li class="list-inline-item g-mr-20">
+                                        <a class="u-link-v5 g-color-gray-dark-v4 g-color-primary--hover" href="#!">
+                                            <i class="fa-solid fa-trash-can"></i>
+                                            <a href="{{route('userpanel_commentsdestroy',['id'=>$cmt->id])}}">Delete</a>
+                                        </a>
+                                    </li>
+                                    <li class="list-inline-item g-mr-20">
+                                        <a class="u-link-v5 g-color-gray-dark-v4 g-color-primary--hover" href="#!">
+                                            <i class="fa-solid fa-message"></i>
+                                            Update
+                                        </a>
+                                    </li>
+                                    <li class="list-inline-item ml-auto">
+                                        <a class="u-link-v5 g-color-gray-dark-v4 g-color-primary--hover" href="#!">
+                                            Status : {{$cmt->status}}
+                                        </a>
+                                    </li>
+
+                                </ul>
+
+
+
+
                             </div>
                         </div>
                     </div>

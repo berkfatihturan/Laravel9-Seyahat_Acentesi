@@ -36,6 +36,13 @@ class UserController extends Controller
         ]);
     }
 
+    public function commentDestroy($id)
+    {
+        $data = Comment::find($id);
+        $data->delete();
+        return redirect(route('userpanel_comments'));
+    }
+
 
     /**
      * Show the form for creating a new resource.
