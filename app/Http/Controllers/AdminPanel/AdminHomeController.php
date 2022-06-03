@@ -84,7 +84,6 @@ class AdminHomeController extends Controller
 
     /* -login- */
 
-
     public function logout(Request $request){
         Auth::logout();
         $request->session()->invalidate();

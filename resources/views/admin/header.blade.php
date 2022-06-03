@@ -6,7 +6,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="/admin/">@yield('companyName')</a>
+        <a class="navbar-brand" href="/admin/" style="padding-top: 15px;background: #00CA79;opacity: .9;">@yield('companyName')</a>
     </div>
 
     <div class="header-right">
