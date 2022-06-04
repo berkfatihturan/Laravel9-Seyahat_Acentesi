@@ -75,6 +75,10 @@ class User extends Authenticatable
             ['user_id','=',$this->id],
             ['role_id','=',1],
         ])->exists();
+    }
 
+    public function check()
+    {
+        return ! is_null($this->user());
     }
 }

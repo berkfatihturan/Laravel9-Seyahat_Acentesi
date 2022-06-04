@@ -41,3 +41,15 @@ a{
 .active{
     color: #F78536!important;
 }
+
+.package-title{
+    border-bottom: 1px solid #848484;
+}
+
+.package-title a{
+    text-decoration: none !important;
+}
+
+a:hover{
+    color: #F78536 !important;
+}

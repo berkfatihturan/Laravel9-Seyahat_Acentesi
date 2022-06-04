@@ -1,5 +1,6 @@
 @extends('layouts.frontbase')
 
+@section('title','User '.\Illuminate\Support\Facades\Auth::user()->name)
 @section('description', $dataSettings->description)
 @section('keywords', $dataSettings->keywords)
 @section('icon', \Illuminate\Support\Facades\Storage::url($dataSettings->icon))

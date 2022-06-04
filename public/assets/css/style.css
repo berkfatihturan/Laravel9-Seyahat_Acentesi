@@ -1991,3 +1991,7 @@ price{
     font-weight: bold;
     color: #fff;
 }
+
+.user-menu i{
+    margin-right: 3px;
+}

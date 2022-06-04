@@ -1,5 +1,7 @@
 @extends('layouts.frontbase')
 
+
+@section('title','Review '.\Illuminate\Support\Facades\Auth::user()->name)
 @section('description', $dataSettings->description)
 @section('keywords', $dataSettings->keywords)
 @section('icon', \Illuminate\Support\Facades\Storage::url($dataSettings->icon))
@@ -34,7 +36,7 @@
                             <img class="d-flex g-width-50 g-height-50 rounded-circle g-mt-3 g-mr-15" src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Image Description">
                             <div class="media-body u-shadow-v18 g-bg-secondary g-pa-30">
                                 <div class="g-mb-15">
-                                    <h4 style="border-bottom: 1px solid #848484"><a href="{{route('home_package',['pid'=>$cmt->package_id])}}">{{$cmt->package->title}}</a></h4>
+                                    <h4 class="package-title"><a href="{{route('home_package',['pid'=>$cmt->package_id])}}">{{$cmt->package->title}}</a></h4>
                                     <div class="star-rating pull-right">
                                         <span class="fa fa-star checked"></span>
                                         <span class="fa fa-star @if($cmt->rate>1) checked @endif"></span>
@@ -71,9 +73,6 @@
                                     </li>
 
                                 </ul>
-
-
-
 
                             </div>
                         </div>

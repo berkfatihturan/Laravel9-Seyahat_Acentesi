@@ -5,8 +5,8 @@
 
         <div class="" style="width: 100%; height: 100%; position: absolute; top: 0px; z-index: 1">
             <!-- -->
-            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="height: 100%">
-                <ol class="carousel-indicators">
+            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="height: 100%;">
+                <ol class="carousel-indicators" style=" margin: 0 auto;">
                     @foreach($dataNavImage as $rs)
                         @foreach($rs->images as $img)
                             <li data-target="#carouselExampleIndicators" data-slide-to="{{$cnt}}" class="@if($cnt++==0) active @endif"></li>
