@@ -105,9 +105,8 @@ class ImageController extends Controller
             $data->image=$request->file('image')->store('images');
         }
         $data->save();
-
         $showImage=Image::find($id);
-        return redirect()->route('admin_mainStyleSetting',[
+        return redirect()->route('admin_mainStyleSetting_show',[
             'id'=>$showImage
         ]);
     }
@@ -124,7 +123,14 @@ class ImageController extends Controller
         if ($data->image && Storage::disk('public')->exists($data->image)){
             Storage::delete($data->image);
         }
-        $data->delete();
-        return redirect()->route('admin_image_index',['pid'=>$pid]);
+
+        if($data->package_id==99){
+            $data->delete();
+            return redirect()->route('admin_mainStyleSetting');
+        }else{
+            $data->delete();
+            return redirect()->route('admin_image_index',['pid'=>$pid]);
+        }
+
     }
 }
