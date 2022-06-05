@@ -73,8 +73,10 @@ Route::middleware(['auth'])->group(function (){
         Route::post('/setting/update',[AdminHomeController::class,'settingUpdate'])->name('setting_update');
 
         /*deneme*/
-        Route::get('/mainStyleSetting/{id}',[AdminHomeController::class,'mainStyleSetting'])->name('mainStyleSetting');
+        Route::get('/mainStyleSetting',[AdminHomeController::class,'mainStyleSetting'])->name('mainStyleSetting');
         Route::get('/mainStyleSetting_show/{id}',[AdminHomeController::class,'mainStyleSetting_Show'])->name('mainStyleSetting_show');
+        Route::post('/mainStyleSetting_Store/{pid}',[AdminHomeController::class,'mainStyleSetting_Store'])->name('mainStyleSetting_store');
+
 
         /* Admin Controller Panel Routes*/
         Route::prefix('/category')->name("category_")->controller(AdminCategoryController::class)->group(function (){
