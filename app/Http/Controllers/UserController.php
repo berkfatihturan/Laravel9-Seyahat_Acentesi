@@ -27,7 +27,7 @@ class UserController extends Controller
     public function comments()
     {
         $dataSettings = Setting::first();
-        $comments = Comment::where('user_id','=',Auth::id())->get();
+        $comments = Comment::where('user_id','=',Auth::id())->orderBy('updated_at', 'DESC')->get();
 
         return view('home.user.comments',[
             'dataSettings'=>$dataSettings,
