@@ -61,7 +61,7 @@
             </li>
 
             <li>
-                <a  href="{{route('admin_mainStyleSetting',['id'=>\App\Models\Image::first()])}}"><i class="fa fa-dashboard "></i>Main Style Settings</a>
+                <a  href="{{route('admin_mainStyleSetting',['id'=>\App\Models\Image::first()])}}"><i class="fa fa-dashboard "></i>Extra Settings</a>
             </li>
 
         </ul>
