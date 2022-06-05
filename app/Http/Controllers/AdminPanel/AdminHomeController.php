@@ -109,15 +109,13 @@ class AdminHomeController extends Controller
 
     /*deneme*/
 
-    public function mainStyleSetting($id){
+    public function mainStyleSetting(){
         $slider=Package::where('category_id',99)->get();
         $image = DB::table('images')->where('package_id',99)->get();
-        $showImage=Image::find($id);
         return view('admin.main-style-setting',[
             'slider'=>$slider,
             'image'=>$image,
             'cal'=>0,
-            'showImage'=>$showImage,
         ]);
     }
 
@@ -127,4 +125,18 @@ class AdminHomeController extends Controller
             'img'=>$img,
         ]);
     }
+
+    public function mainStyleSetting_Store(Request $request,$pid){
+        $data = new Image();
+        $data->package_id=$pid;
+        $data->title=$request->title;
+        $data->slider_text=$request->slider_text;
+        if($request->file('image')){
+            $data->image=$request->file('image')->store('images');
+        }
+
+        $data->save();
+        return redirect()->route('admin_mainStyleSetting');
+    }
+
 }
