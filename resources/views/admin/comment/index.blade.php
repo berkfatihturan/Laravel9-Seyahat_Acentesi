@@ -30,7 +30,8 @@
                                     <thead>
                                     <tr>
                                         <th style="width: 5% ">#</th>
-                                        <th style="width: 5%">User Id</th>
+                                        <th style="width: 3%">User Id</th>
+                                        <th style="width: 10%"> User Name</th>
                                         <th style="width: 2%">Package Id</th>
                                         <th style="width: 20%">Package Name</th>
                                         <th style="width: 20%">Subject</th>
@@ -45,6 +46,7 @@
                                         <tr>
                                             <td>{{$rs->id}}</td>
                                             <td>{{$rs->user_id}}</td>
+                                            <td>{{$rs->user->name}}</td>
                                             <td>{{$rs->package_id}}</td>
                                             <td><a href="{{route('admin_package_show',['id'=>$rs->package_id])}}">{{$rs->package->title}}</a></td>
                                             <td>{{$rs->subject}}</td>
