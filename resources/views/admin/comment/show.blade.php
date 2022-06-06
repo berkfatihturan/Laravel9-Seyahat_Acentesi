@@ -44,6 +44,11 @@
                                         <th style="width:10%;">User Id</th>
                                         <td>{{$data->user_id}}</td>
                                     </tr>
+                                    <tr>
+                                        <th style="width: 10%"> User Name</th>
+                                        <td>{{$data->user->name}}</td>
+                                    </tr>
+
 
                                     <tr>
                                         <th style="width:10%;">Package Id</th>
