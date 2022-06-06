@@ -33,6 +33,7 @@ class UserController extends Controller
             'dataSettings'=>$dataSettings,
             'page'=>'comment',
             'comments'=>$comments,
+            'info'=>"",
         ]);
     }
 
@@ -41,6 +42,21 @@ class UserController extends Controller
         $data = Comment::find($id);
         $data->delete();
         return redirect(route('userpanel_comments'));
+    }
+
+    public function commentUpdate(Request $request, $id)
+    {
+        $data =Comment::find($id);
+        $data->status = "New";
+
+        $data->subject=$request->input('subject');
+        $data->comment=$request->input('comment');
+        $data->rate=$request->input('rate');
+        $data->ip=request()->ip();
+        $data->save();
+
+        return redirect()->route('userpanel_comments')->with('info','Your comment has been updated');
+
     }
 
 
