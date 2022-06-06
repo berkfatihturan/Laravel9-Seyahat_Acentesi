@@ -60,6 +60,7 @@ Route::middleware(['auth'])->group(function (){
         Route::get('/','index')->name('index');
         Route::get('/comments','comments')->name('comments');
         Route::get('/commentsDestroy/{id}','commentDestroy')->name('commentsdestroy');
+        Route::post('/commentUpdate/{id}','commentUpdate')->name("commentUpdate");
     });
 
 
