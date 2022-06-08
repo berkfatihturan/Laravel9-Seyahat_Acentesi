@@ -14,8 +14,6 @@
     <div id="fh5co-tours" class="fh5co-section-gray">
         <div class="container">
 
-            {!! $dataSettings->aboutus !!}
-
         </div>
     </div>
 @endsection

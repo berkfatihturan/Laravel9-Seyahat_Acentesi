@@ -18,7 +18,7 @@ class CheckAdmin
     public function handle(Request $request, Closure $next)
     {
         if (Auth::check()==false){
-            return redirect(route('loginadmin'))->withErrors(['error'=>'You need to login']);
+            return redirect(route('loginuser'))->withErrors(['error'=>'You need to login']);
         }
         $userRoles = Auth::user()->roles->pluck('name');
 

@@ -8,6 +8,7 @@ use App\Models\Image;
 use App\Models\Package;
 use App\Models\Setting;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 use Illuminate\Database\Schema\Blueprint;
@@ -73,7 +74,7 @@ class PackageController extends Controller
     {
         $data = new Package();
         $data->category_id= $request->category_id;
-        $data->user_id=0;
+        $data->user_id=Auth::user()->id;
         $data->title = $request->title;
         $data->keywords = $request->keywords;
         $data->descriptions = $request->descriptions;

@@ -129,7 +129,6 @@
     </div> <!-- /row -->
     </div> <!-- /container -->
 
-
     <div class="detail-tab my-5">
         <ul class="nav nav-tabs " role="tablist">
             <li role="presentation" class="@if(\Illuminate\Support\Facades\Session::get('info')==null) active @endif"><a href="#detail" style="color: black;" aria-controls="campaign" role="tab" data-toggle="tab">Detail</a></li>

@@ -107,6 +107,29 @@ class AdminHomeController extends Controller
         ])->onlyInput('email');
     }
 
+    public function loginUsercheck(Request $request){
+
+        if (Auth::check()){
+            return redirect('/');
+        }
+
+        $credentials = $request->validate([
+            'email'=>['required','email'],
+            'password'=>['required'],
+        ]);
+
+        if (Auth::attempt($credentials)){
+            $request->session()->regenerate();
+            return redirect()->intended('/');
+        }
+
+        return back()->withErrors([
+            'error'=>'The provided credentials do not match our record.',
+        ])->onlyInput('email');
+    }
+
+
+
     /*deneme*/
 
     public function mainStyleSetting(){

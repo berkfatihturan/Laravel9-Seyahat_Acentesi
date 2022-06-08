@@ -1,6 +1,6 @@
 @extends('layouts.frontbase')
 
-@section('title', "About Us | ". \App\Models\Setting::getSettings()->title)
+@section('title', "Login | ". \App\Models\Setting::getSettings()->title)
 @section('description', \App\Models\Setting::getSettings()->description)
 @section('keywords', \App\Models\Setting::getSettings()->keywords)
 @section('icon', \Illuminate\Support\Facades\Storage::url(\App\Models\Setting::getSettings()->icon))
@@ -14,8 +14,9 @@
     <div id="fh5co-tours" class="fh5co-section-gray">
         <div class="container">
 
-            {!! $dataSettings->aboutus !!}
+            @include('auth.register')
 
         </div>
     </div>
 @endsection
+

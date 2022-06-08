@@ -33,14 +33,14 @@ Route::get('/contact', [HomeController::class, 'contact'])->name("contact");
 Route::post('/storemessage', [HomeController::class, 'storemessage'])->name("storemessage");
 Route::get('/faq',[HomeController::class,'faq'])->name("home_faq");
 Route::post('/packagecomment',[HomeController::class,'packagecomment'])->name("packagecomment");
-Route::view('/loginuser','home.login');
-Route::view('/registeruser','home.register');
 
-
+/* login */
+Route::view('/loginuser','home.login')->name('loginuser');
+Route::view('/registeruser','home.register')->name('registeruser');
 Route::get('/logoutuser', [AdminHomeController::class, 'logout'])->name("logoutuser");
-
 Route::view('/loginadmin','admin.login')->name('loginadmin');
 Route::post('/loginadmincheck', [AdminHomeController::class, 'loginAdmincheck'])->name("loginAdmincheck");
+Route::post('/loginusercheck', [AdminHomeController::class, 'loginUsercheck'])->name("loginUsercheck");
 
 /* Home Page */
 Route::post('/search', [HomeController::class, 'search'])->name("home_search");
