@@ -36,6 +36,7 @@ Route::post('/packagecomment',[HomeController::class,'packagecomment'])->name("p
 Route::view('/loginuser','home.login');
 Route::view('/registeruser','home.register');
 
+
 Route::get('/logoutuser', [AdminHomeController::class, 'logout'])->name("logoutuser");
 
 Route::view('/loginadmin','admin.login')->name('loginadmin');
@@ -45,6 +46,7 @@ Route::post('/loginadmincheck', [AdminHomeController::class, 'loginAdmincheck'])
 Route::post('/search', [HomeController::class, 'search'])->name("home_search");
 Route::get('/list', [HomeController::class, 'list'])->name("home_list");
 Route::get('/package/{pid}', [HomeController::class, 'package'])->name("home_package");
+Route::get('/categorypackage/{id}/{slug}', [HomeController::class, 'categorypackage'])->name("home_categorypackage");
 
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {

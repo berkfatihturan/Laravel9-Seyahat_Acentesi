@@ -18,7 +18,6 @@
             <!-- /. ROW  -->
             <div class="row">
                 <div class="col-md-12"></div>
-
             </div>
             <div class="row">
                 <div class="col-md-12">
@@ -72,6 +71,7 @@
                                                     @endforeach
                                                 </select>
                                                 <button type="submit" class="btn btn-primary btn-sm" style="margin-top:10px;">Update</button>
+                                                @if(\Illuminate\Support\Facades\Session::get('error')!=null) <label class="alert alert-danger pull-right" style="margin: 0; padding: 5px 10px; position:relative; top: 6.3px;">{{\Illuminate\Support\Facades\Session::get('error')}}</label> @endif
                                             </form>
                                         </td>
                                     </tr>
