@@ -11,6 +11,7 @@ use \App\Http\Controllers\AdminPanel\MessageController as AdminMessageController
 use App\Http\Controllers\AdminPanel\FaqController as AdminFaqController;
 use App\Http\Controllers\AdminPanel\CommentController as AdminCommentController;
 use App\Http\Controllers\AdminPanel\AdminUserController as AdminUserController;
+use \App\Http\Controllers\ReservationController as ReservationController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -40,14 +41,14 @@ Route::view('/registeruser','home.register')->name('registeruser');
 Route::get('/logoutuser', [AdminHomeController::class, 'logout'])->name("logoutuser");
 Route::view('/loginadmin','admin.login')->name('loginadmin');
 Route::post('/loginadmincheck', [AdminHomeController::class, 'loginAdmincheck'])->name("loginAdmincheck");
-Route::post('/loginusercheck', [AdminHomeController::class, 'loginUsercheck'])->name("loginUsercheck");
+Route::post('/loginusercheck', [ReservationController::class, 'index'])->name("reservation-index");
 
 /* Home Page */
 Route::post('/search', [HomeController::class, 'search'])->name("home_search");
 Route::get('/list', [HomeController::class, 'list'])->name("home_list");
 Route::get('/package/{pid}', [HomeController::class, 'package'])->name("home_package");
 Route::get('/categorypackage/{id}/{slug}', [HomeController::class, 'categorypackage'])->name("home_categorypackage");
-
+Route::get('/rezervations/{pid}', [HomeController::class, 'index'])->name("reservation-index");
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');

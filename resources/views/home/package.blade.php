@@ -69,7 +69,7 @@
                             </ul>
                         </div>
                         <div class="col-lg-7 col-sm-7 hidden-xs">
-                            <button class="btn btn-primary btn-block btn-lg" rel="nofollow" onclick="scrollToAnchor('dev-roomList');">Rezervasyon Yap</button>
+                            <a href="{{route('reservation-index',['pid'=>$pack->id])}}" class="btn btn-primary btn-block btn-lg" rel="nofollow" onclick="scrollToAnchor('dev-roomList');">Rezervasyon Yap</a>
                         </div>
                     </div>
                 </div>

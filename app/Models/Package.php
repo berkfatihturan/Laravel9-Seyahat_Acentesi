@@ -25,4 +25,8 @@ class Package extends Model
     public function images(){
         return $this->hasMany(Image::class,'package_id');
     }
+
+    public function reservations(){
+        return $this->hasMany(Reservation::class);
+    }
 }
