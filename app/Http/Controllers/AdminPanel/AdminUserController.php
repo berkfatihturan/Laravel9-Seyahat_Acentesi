@@ -94,16 +94,28 @@ class AdminUserController extends Controller
         $data = new RoleUser();
         $data->user_id=$id;
         $data->role_id=$request->role;
-        $data->save();
+        if (RoleUser::where('role_id','=',$data->role_id)->where('user_id','=',$data->user_id)->first()==null){
+            $data->save();
+            return redirect(route('admin_user_show',['id'=>$id]));
+        }else{
+            return redirect()->route('admin_user_show',['id'=>$id])->with('error','You Alrady Have This Role');
+        }
 
-        return redirect(route('admin_user_show',['id'=>$id]));
+
+
     }
 
     public function deleteRole($rid,$uid)
     {
         $data = User::find($uid);
-        $data->roles()->detach($rid);
-        return redirect(route('admin_user_show',['id'=>$uid]));
+        if(RoleUser::where('role_id','=','1')->count() <= 1 && $rid==1){
+            return redirect()->route('admin_user_show',['id'=>$uid])->with('error','Must Have At Least One Admin');
+        }else{
+            $data->roles()->detach($rid);
+            return redirect(route('admin_user_show',['id'=>$uid]));
+        }
+
+
     }
 
     /**

@@ -64,6 +64,9 @@
 
     <link rel="stylesheet" href="{{asset('assets')}}/css/style.css">
 
+    <!-- header subnav -->
+    <link rel="stylesheet" href="{{asset('assets')}}/css/sub-nav.css">
+
 
     <!-- Modernizr JS -->
     <script src="{{asset('assets')}}/js/modernizr-2.6.2.min.js"></script>

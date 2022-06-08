@@ -11,9 +11,9 @@
 
     <div class="header-right">
 
-        <a href="message-task.html" class="btn btn-info" title="New Message"><b>30 </b><i class="fa fa-envelope-o fa-2x"></i></a>
-        <a href="message-task.html" class="btn btn-primary" title="New Task"><b>40 </b><i class="fa fa-bars fa-2x"></i></a>
-        <a href="/logoutuser" class="btn btn-danger" title="Logout"><i class="fa fa-exclamation-circle fa-2x"></i>Logout</a>
+        <a href="{{route('admin_message_index')}}" class="btn btn-info" style="background: none;border: none" title="New Message">@if(\App\Models\Message::countMessage()>0)<b>{{\App\Models\Message::countMessage()}} </b>@endif<i class="fa fa-envelope-o fa-2x"></i></a>
+        <a href="{{route('home')}}" class="btn btn-primary" style="background: none; border: none" title="Home"><i style="font-size: 22px" class="fas fa-home-lg"></i></a>
+        <a href="/logoutuser" class="btn btn-danger" style="background: none; border: none" title="Logout"><i class="fas fa-sign-out fa-2x"></i></a>
 
     </div>
 </nav>
