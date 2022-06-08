@@ -15,10 +15,16 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
+
+    public static function maincategorylist(){
+
+        return Category::where('parent_id','=',0)->where('id','!=',99)->where('status','=','True')->with('children')->get();
+    }
+
     public function index(){
-        $data = Package::all();
+        $data = Package::where('status','=','True')->get();
         $dataNavImage=Package::where('category_id', '=', 99)->get();
-        $dataCategory = Category::where('parent_id', '=', 0)->limit(4)->get();
+        $dataCategory = Category::where('parent_id', '=', 0)->where('status','=','True')->limit(4)->get();
         $dataSettings = Setting::first();
         return view('home.index',[
             'data'=>$data,
@@ -33,7 +39,7 @@ class HomeController extends Controller
     /*deneme*/
     public function search(Request $request){
         $dataSettings = Setting::first();
-        $data = Package::where('start_date','>=',$request->start_date)->get();
+        $data = Package::where('start_date','>=',$request->start_date)->where('status','=','True')->get();
         return view('home.search-list',[
             'data'=>$data,
             'dataSettings'=>$dataSettings,
@@ -42,7 +48,7 @@ class HomeController extends Controller
     }
 
     public function list(){
-        $data = Package::all();
+        $data = Package::where('status','=','True')->get();
         $dataSettings = Setting::first();
         return view('home.search-list',[
             'data'=>$data,
@@ -66,6 +72,20 @@ class HomeController extends Controller
             'dataComment'=>$dataComment,
         ]);
     }
+
+    public function categorypackage($id,$slug){
+        $category=Category::find($id);
+        $data = Package::where('category_id','=',$id)->where('status','=','True')->get();
+        $dataSettings = Setting::first();
+        return view('home.search-list',[
+            'data'=>$data,
+            'category'=>$category,
+            'dataSettings'=>$dataSettings,
+            'page'=>"list",
+        ]);
+    }
+
+
 
     public function references(){
         $dataSettings = Setting::first();

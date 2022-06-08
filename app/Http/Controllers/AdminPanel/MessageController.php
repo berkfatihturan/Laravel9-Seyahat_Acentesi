@@ -57,6 +57,7 @@ class MessageController extends Controller
     public function show($id)
     {
         $data = Message::find($id);
+        $data->status = 'True';
         $data->save();
         return view('admin.message.show',[
             'data'=>$data,

@@ -49,5 +49,31 @@ h3{
     margin-top: 10px;
 }
 
+.cant-find{
+    color: white;
+    background: #F78536;
+    width: 30vw;
+    text-align: center;
+    padding: 10px;
+    border-radius: 10px;
+    margin: 20vh auto;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+
+.category-top{
+    text-align: center;
+    margin-top: 5rem;
+    border-bottom: 1px solid  #F78536;
+    padding-bottom: 10px;
+}
+
+.category-top__title{
+    font-weight: 600;
+    font-size: 32px;
+    padding: 5px;
+}
+
+
 
 
