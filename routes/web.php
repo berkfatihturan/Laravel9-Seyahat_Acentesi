@@ -41,33 +41,43 @@ Route::view('/registeruser','home.register')->name('registeruser');
 Route::get('/logoutuser', [AdminHomeController::class, 'logout'])->name("logoutuser");
 Route::view('/loginadmin','admin.login')->name('loginadmin');
 Route::post('/loginadmincheck', [AdminHomeController::class, 'loginAdmincheck'])->name("loginAdmincheck");
-Route::post('/loginusercheck', [ReservationController::class, 'index'])->name("reservation-index");
+Route::post('/loginusercheck', [AdminHomeController::class, 'loginUsercheck'])->name("loginUsercheck");
 
 /* Home Page */
 Route::post('/search', [HomeController::class, 'search'])->name("home_search");
 Route::get('/list', [HomeController::class, 'list'])->name("home_list");
 Route::get('/package/{pid}', [HomeController::class, 'package'])->name("home_package");
 Route::get('/categorypackage/{id}/{slug}', [HomeController::class, 'categorypackage'])->name("home_categorypackage");
-Route::get('/rezervations/{pid}', [HomeController::class, 'index'])->name("reservation-index");
+
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
+/*
+Route::middleware(['auth'])->group(function (){
+    Route::get('/reservations/{pid}', [ReservationController::class,'create'])->name('reservation-create');
+    Route::get('/reservations/store/{pid}', [ReservationController::class,'store'])->name('reservation-store');
+});
 
+*/
 
-/* Admin Panel Routes*/
 Route::middleware(['auth'])->group(function (){
 
-    Route::prefix('userpanel')->name('userpanel_')->controller(UserController::class)->group(function (){
 
+    /* User Panel Routes */
+    Route::prefix('userpanel')->name('userpanel_')->controller(UserController::class)->group(function (){
         Route::get('/','index')->name('index');
         Route::get('/comments','comments')->name('comments');
         Route::get('/commentsDestroy/{id}','commentDestroy')->name('commentsdestroy');
         Route::post('/commentUpdate/{id}','commentUpdate')->name("commentUpdate");
     });
 
+    Route::prefix('reservations')->name('reservation_')->controller(ReservationController::class)->group(function () {
+        Route::get('/{pid}','create')->name('create');
+        Route::post('/store/{pid}','store')->name('store');
+    });
 
-
+    /* Admin Panel Routes*/
     Route::middleware(['admin'])->prefix('admin')->name("admin_")->group(function (){
 
         Route::get('/',[AdminHomeController::class,'index'])->name('index');

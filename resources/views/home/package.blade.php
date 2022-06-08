@@ -69,7 +69,7 @@
                             </ul>
                         </div>
                         <div class="col-lg-7 col-sm-7 hidden-xs">
-                            <a href="{{route('reservation-index',['pid'=>$pack->id])}}" class="btn btn-primary btn-block btn-lg" rel="nofollow" onclick="scrollToAnchor('dev-roomList');">Rezervasyon Yap</a>
+                            <a href="{{route('reservation_create',['pid'=>$pack->id])}}" class="btn btn-primary btn-block btn-lg">Rezervasyon Yap</a>
                         </div>
                     </div>
                 </div>
@@ -175,7 +175,7 @@
                                     @auth
                                         <button class="btn btn-primary pull-right" style="border-radius: 5px; font-weight:500">Submit</button>
                                     @else
-                                        <a href="/login" class="btn btn-primary pull-right" style="border-radius: 5px; font-weight:400"> For Submit Your Review, Please Login</a>
+                                        <a href="/loginuser" class="btn btn-primary pull-right" style="border-radius: 5px; font-weight:400"> For Submit Your Review, Please Login</a>
                                     @endauth
                                 </div>
                             </div>
