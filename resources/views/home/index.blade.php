@@ -34,7 +34,7 @@
                             <h3>{{$rs->title}}</h3>
                             <span>{{$rs->nights}} nights </span>
                             <span class="price">{{$rs->price}}</span>
-                            <a class="btn btn-primary btn-outline" href="/package/{{$rs->id}}">Book Now <i class="icon-arrow-right22"></i></a>
+                            <a class="btn btn-primary btn-outline" href="/package/{{$rs->id}}">See Detail<i class="icon-arrow-right22"></i></a>
                         </div>
                     </div>
                 </div>

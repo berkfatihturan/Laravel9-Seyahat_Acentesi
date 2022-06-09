@@ -56,7 +56,7 @@
                         </a>
                         <ul class="fh5co-sub-menu">
                             <li><a href="/userpanel"><i class="fa-solid fa-id-badge"></i> My Account</a></li>
-                            <li><a href=""><i class=" fa-solid fa-book-open"></i>Rezarvation</a></li>
+                            <li><a href="{{route('reservation_index')}}"><i class=" fa-solid fa-book-open"></i>Rezarvation</a></li>
 
                             @if($userCheck=Auth::check()!=null)
                                 @if((Auth::user()->isAdmin()==true))

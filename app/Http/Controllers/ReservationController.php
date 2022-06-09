@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Message;
 use App\Models\Package;
 use App\Models\Reservation;
+use App\Models\Setting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -17,7 +18,13 @@ class ReservationController extends Controller
      */
     public function index()
     {
-
+        $data = Reservation::where('user_id','=',Auth::user()->id);
+        $dataSettings = Setting::first();
+        return view('home.user.reservation',[
+            'data'=>$data,
+            'dataSettings'=>$dataSettings,
+            'page'=>'reservation',
+        ]);
     }
 
     /**
@@ -85,9 +92,9 @@ class ReservationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request,$pid,$res)
     {
-        //
+
     }
 
     /**

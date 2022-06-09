@@ -5,7 +5,7 @@
         <a class="@if($page=="User") active @endif" href="/userpanel"><i class="fa-solid fa-id-badge"></i> My Account</a>
     </li>
     <li class="sub-menu__item">
-        <a class="@if($page=="") active @endif" href="#"><i class="fa-solid fa-book-open"></i>Rezarvation</a>
+        <a class="@if($page=="reservation") active @endif" href="{{route('reservation_index')}}"><i class="fa-solid fa-book-open"></i>Rezarvation</a>
     </li>
     <li class="sub-menu__item">
         <a class="@if($page=="comment") active @endif" href="{{route('userpanel_comments')}}"><i class="fa-solid fa-book-open"></i>Review</a>

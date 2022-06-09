@@ -73,7 +73,8 @@ Route::middleware(['auth'])->group(function (){
     });
 
     Route::prefix('reservations')->name('reservation_')->controller(ReservationController::class)->group(function () {
-        Route::get('/{pid}','create')->name('create');
+        Route::get('/','index')->name('index');
+        Route::get('/create/{pid}','create')->name('create');
         Route::post('/store/{pid}','store')->name('store');
     });
 
