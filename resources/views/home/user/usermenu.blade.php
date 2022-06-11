@@ -10,6 +10,11 @@
     <li class="sub-menu__item">
         <a class="@if($page=="comment") active @endif" href="{{route('userpanel_comments')}}"><i class="fa-solid fa-book-open"></i>Review</a>
     </li>
+
+    <li class="sub-menu__item">
+        <a class="@if($page=="mypackage") active @endif" href="{{route('userpanel_mypackage')}}"><i class="fa-solid fa-book-open"></i>My Packages</a>
+    </li>
+
     @if(Auth::user()->isAdmin()==true)
         <li class="sub-menu__item">
             <a class="@if($page=="") active @endif" href="/admin"><i class="fa-solid fa-screwdriver-wrench"></i>Admin Settings</a>

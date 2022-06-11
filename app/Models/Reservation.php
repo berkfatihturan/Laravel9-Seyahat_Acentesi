@@ -9,11 +9,11 @@ class Reservation extends Model
 {
     use HasFactory;
 
-    public function users(){
-        return $this->belongsTo(Reservation::class);
+    public function user(){
+        return $this->belongsTo(User::class);
     }
 
-    public function packages(){
+    public function package(){
         return $this->belongsTo(Package::class);
     }
 

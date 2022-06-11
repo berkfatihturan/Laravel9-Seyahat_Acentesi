@@ -12,6 +12,7 @@ use App\Http\Controllers\AdminPanel\FaqController as AdminFaqController;
 use App\Http\Controllers\AdminPanel\CommentController as AdminCommentController;
 use App\Http\Controllers\AdminPanel\AdminUserController as AdminUserController;
 use \App\Http\Controllers\ReservationController as ReservationController;
+use \App\Http\Controllers\AdminPanel\AdminReservationController as AdminReservationController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -70,12 +71,15 @@ Route::middleware(['auth'])->group(function (){
         Route::get('/comments','comments')->name('comments');
         Route::get('/commentsDestroy/{id}','commentDestroy')->name('commentsdestroy');
         Route::post('/commentUpdate/{id}','commentUpdate')->name("commentUpdate");
+
+        Route::get('/mypackage','mypackage')->name("mypackage");
     });
 
     Route::prefix('reservations')->name('reservation_')->controller(ReservationController::class)->group(function () {
         Route::get('/','index')->name('index');
         Route::get('/create/{pid}','create')->name('create');
         Route::post('/store/{pid}','store')->name('store');
+        Route::get('/cancel/{id}', 'cancel')->name('cancel');
     });
 
     /* Admin Panel Routes*/
@@ -201,6 +205,23 @@ Route::middleware(['auth'])->group(function (){
             Route::post('/update/{id}', 'update')->name('update');
             /* -Add Role- */
             Route::post('/addRole/{id}', 'addRole')->name('addRole');
+            /* -Delete Role- */
+            Route::get('/deleteRole/{rid}/{uid}', 'deleteRole')->name('deleteRole');
+            /* -delete- */
+            Route::get('/destroy/{id}', 'destroy')->name('destroy');
+
+        });
+
+        Route::prefix('/reservation')->name("reservation_")->controller(AdminReservationController::class)->group(function (){
+
+            Route::get('/{status}', 'index')->name('index');
+            /* -edit- */
+            Route::get('/edit/{id}', 'edit')->name('edit');
+            /* -show- */
+            Route::get('/show/{id}', 'show')->name('show');
+            /* -update- */
+            Route::post('/update/{id}', 'update')->name('update');
+            /* -Add Role- */
             /* -Delete Role- */
             Route::get('/deleteRole/{rid}/{uid}', 'deleteRole')->name('deleteRole');
             /* -delete- */

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Comment;
+use App\Models\Image;
+use App\Models\Package;
 use App\Models\Setting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -124,5 +126,20 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+
+    public function mypackage(){
+
+        $data = Package::where('user_id','=',Auth::id())->get();
+
+        $dataSettings = Setting::first();
+
+        return view('home.user.myPackage',[
+            'pack'=>$data,
+
+            'dataSettings'=>$dataSettings,
+            'page'=>"mypackage"
+        ]);
     }
 }

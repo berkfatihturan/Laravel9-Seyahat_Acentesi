@@ -5,8 +5,15 @@
 @section('keywords', $dataSettings->keywords)
 @section('icon', \Illuminate\Support\Facades\Storage::url($dataSettings->icon))
 
-
 @section('nagivation')
+@endsection
+
+@section('head')
+    <style>
+        .show {
+            display: block !important;
+        }
+    </style>
 @endsection
 
 @section('content')
@@ -16,15 +23,15 @@
                 <h3 style="margin-bottom: 5px">FAQ</h3>
             </div>
 
-            <div class="panel-group" id="accordion">
+            <div class="panel-group">
                 @foreach($data as $rs)
                     <div class="panel panel-default" style="margin-bottom: 20px; box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;">
                         <div class="panel-heading" style="background-color: #F78536; opacity: .7;">
                             <h3 class="panel-title" style="text-align: center; color: white; opacity: 1">
-                                <a data-toggle="collapse" data-parent="#accordion" href="#{{$rs->id}}" class="collapsed">{{$rs->question}}</a>
+                                <a data-toggle="collapse" href="#{{$rs->id}}" onclick="deneme()">{{$rs->question}}</a>
                             </h3>
                         </div>
-                        <div id="{{$rs->id}}" class="panel-collapse collapse" style="height: 0px;">
+                        <div class="collapse" id="{{$rs->id}}"style="height: 0px;">
                             <div class="panel-body" style="text-align: center">
                                 {!! $rs->answer !!}
                             </div>
@@ -34,4 +41,8 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('foot')
+
 @endsection

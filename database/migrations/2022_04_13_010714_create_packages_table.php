@@ -23,6 +23,11 @@ return new class extends Migration
             $table->string('image')->nullable();
             $table->text('detail')->nullable();
             $table->float('price')->nullable();
+
+            $table->integer('max_people')->nullable()->default('1');
+            $table->integer('num_people')->nullable()->default('1');
+            $table->integer('extra_charge')->nullable()->default('0');
+
             $table->integer('nights')->nullable();
             $table->date('start_date');
             $table->date('end_date');

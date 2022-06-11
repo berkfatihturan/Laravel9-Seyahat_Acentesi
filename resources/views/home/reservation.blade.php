@@ -30,37 +30,31 @@
 
                             <div class="form-group">
                                 <label>Start Date</label>
-                                <input class="form-control" type="date" placeholder="Title" name="start_date" min="{{$pack->start_date}}" max="{{$pack->end_date}}" required>
+                                <span style="display: none">@if($pack->start_date > now()->format('Y-m-d')) {{$dt=$pack->start_date}} @else {{$dt=now()->format('Y-m-d')}} @endif</span>
+                                <input class="form-control" type="date" name="start_date" min="{{$dt}}" max="{{$pack->end_date}}" required>
                             </div>
 
                             <div class="form-group">
                                 <label>Person</label>
-                                <input id="person-form" class="form-control" type="number" name="person" value="1" min="1" onclick="getPerson()" required>
-<!--
-                                <div class="input-group">
-                                    <div class="input-group-btn">
-                                        <button id="down" class="btn btn-default" onclick=" down('0')"><i class="fas fa-plus"></i></button>
-                                    </div>
-                                    <input type="text" id="myNumber" class="form-control input-number" value="1" />
-                                    <div class="input-group-btn">
-                                        <button id="up" class="btn btn-default" onclick="up('10')"><span class="glyphicon glyphicon-plus"></span></button>
-                                    </div>
-                                </div>
-                                -->
+                                <input id="person-form" class="form-control" type="number" name="person" value="1" min="1" max="{{$pack->max_people}}" onclick="getPerson()" required>
+                                <label style="font-size: 12px; font-weight: 300; opacity: .6; padding-left: 10px; margin-bottom: 0">*This package can be purchased for a maximum of {{$pack->max_people}} people at a time. There is an additional fee of {{$pack->extra_charge}}$ per person for more than {{$pack->num_people}} people in the package.</label>
                                 <script type='text/javascript'>
                                     function getPerson(){
 
-                                        var model=$('#person-form').val();
-                                        var price = model * {!! $pack->price !!};
+                                        var person=$('#person-form').val();
+                                        var price = {!! $pack->price !!};
 
+                                        if(person > {!! $pack->num_people !!}){
+                                            price = price + (person-{!! $pack->num_people !!}) * {!! $pack->extra_charge !!};
+                                        }
+                                        /*
                                         var panel=document.querySelector("#pa");
                                         const div = document.getElementById('node')
                                         const clone = div.cloneNode(true);
-                                        clone.id = "node"+model;
+                                        clone.id = "node"+person;
                                         clone.style.display= "block";
                                         panel.appendChild(clone);
-
-
+                                        */
                                         document.getElementById("price-form").value = price;
                                         return document.getElementById("price").innerHTML = price;
                                     }
@@ -68,10 +62,26 @@
                             </div>
 
                             <div class="form-group">
+                                <label>Phone Number</label>
+                                <input class="form-control" type="text" placeholder="Phone Number" name="phone_number">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Address</label>
+                                <input class="form-control" type="text" placeholder="Address" name="address">
+                            </div>
+
+                            <div class="form-group">
+                                <label>E-mail</label>
+                                <input class="form-control" type="email" placeholder="Email" name="email">
+                            </div>
+                            <!--
+                            <div class="form-group">
                                 <label>Note</label>
                                 <textarea class="form-control" rows="4" cols="50" name="note">
                                 </textarea>
                             </div>
+                            -->
                             <input class="form-control" type="hidden" name="price" value="{{$pack->price}}" required>
                             <input id="price-form" class="form-control" type="hidden" placeholder="amount" name="amount" required>
                         </form>
@@ -112,7 +122,7 @@
                             <span style="font-size: 16px">TOTAL PRICE </span>
                             <span id="" style="font-size: 16px" class="pull-right">
 
-                                <p id="price"></p>
+                                <p id="price">{{$pack->price}}</p>
                             </span>
                         </div>
                         <hr/>

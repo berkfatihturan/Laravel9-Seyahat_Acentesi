@@ -81,6 +81,11 @@ class PackageController extends Controller
         $data->detail=$request->detail;
         $data->nights=$request->nights;
         $data->price = $request->price ;
+
+        $data->max_people = $request->max_people ;
+        $data->num_people = $request->num_people ;
+        $data->extra_charge = $request->extra_charge ;
+
         $data->start_date = $request->start_date;
         $data->end_date= $request->end_date ;
         $data->tax = $request->tax ;
@@ -137,13 +142,18 @@ class PackageController extends Controller
     {
         $data = Package::find($id);
         $data->category_id= $request->category_id;
-        $data->user_id=0;
+        $data->user_id=Auth::id();
         $data->title = $request->title;
         $data->keywords = $request->keywords;
         $data->descriptions = $request->descriptions;
         $data->nights=$request->nights;
         $data->detail=$request->detail;
         $data->price = $request->price ;
+
+        $data->max_people = $request->max_people ;
+        $data->num_people = $request->num_people ;
+        $data->extra_charge = $request->extra_charge ;
+
         $data->start_date = $request->start_date;
         $data->end_date= $request->end_date ;
         $data->tax = $request->tax ;

@@ -64,6 +64,22 @@
                                     <input class="form-control" type="number" name="price" value="0">
                                 </div>
 
+
+                                <div class="form-group">
+                                    <label>Tour Max People</label>
+                                    <input class="form-control" type="number" name="max_people" value="0">
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Tour Person</label>
+                                    <input class="form-control" type="number" name="num_people" value="0">
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Extra Charge</label>
+                                    <input class="form-control" type="number" name="extra_charge" value="0">
+                                </div>
+
                                 <div class="form-group">
                                     <label>Start Date</label>
                                     <input class="form-control" type="date" name="start_date">

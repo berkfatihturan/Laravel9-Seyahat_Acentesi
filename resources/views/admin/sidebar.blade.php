@@ -21,13 +21,20 @@
                 <a href="#"><i class="fa fa-desktop "></i>Reservation<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li>
-                        <a href="panel-tabs.html"><i class="fa fa-toggle-on"></i>On Going</a>
+                        <a href="{{route('admin_reservation_index',['status'=>'New'])}}"><i class="fa fa-circle-o "></i></i>New</a>
                     </li>
+
                     <li>
-                        <a href="notification.html"><i class="fa fa-bell "></i>Cancelled</a>
+                        <a href="{{route('admin_reservation_index',['status'=>'Accepted'])}}"><i class="fa fa-circle-o "></i></i>Accepted</a>
                     </li>
+
+
                     <li>
-                        <a href="progress.html"><i class="fa fa-circle-o "></i>In Progress</a>
+                        <a href="{{route('admin_reservation_index',['status'=>'Cancelled'])}}"><i class="fa fa-circle-o "></i>Cancelled</a>
+                    </li>
+
+                    <li>
+                        <a href="{{route('admin_reservation_index',['status'=>'Completed'])}}"><i class="fa fa-circle-o "></i>Completed</a>
                     </li>
                 </ul>
             </li>

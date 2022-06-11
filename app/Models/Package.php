@@ -15,7 +15,7 @@ class Package extends Model
     }
 
     public function user(){
-        return $this->belongsTo(Category::class);
+        return $this->belongsTo(User::class);
     }
 
     public function comment(){
@@ -26,7 +26,7 @@ class Package extends Model
         return $this->hasMany(Image::class,'package_id');
     }
 
-    public function reservations(){
+    public function reservation(){
         return $this->hasMany(Reservation::class);
     }
 }

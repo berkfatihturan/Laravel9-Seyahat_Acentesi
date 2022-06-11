@@ -6,6 +6,7 @@ use App\Models\Message;
 use App\Models\Package;
 use App\Models\Reservation;
 use App\Models\Setting;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -18,10 +19,12 @@ class ReservationController extends Controller
      */
     public function index()
     {
-        $data = Reservation::where('user_id','=',Auth::user()->id);
+        $user = User::find(Auth::id());
+        $reservation = Reservation::where('user_id','=',Auth::id())->orderBy('updated_at','DESC')->get();
         $dataSettings = Setting::first();
         return view('home.user.reservation',[
-            'data'=>$data,
+            'reservation'=>$reservation,
+            'user'=>$user,
             'dataSettings'=>$dataSettings,
             'page'=>'reservation',
         ]);
@@ -35,9 +38,11 @@ class ReservationController extends Controller
     public function create($pid)
     {
         $pack=Package::find($pid);
+        $date_max=now()->format('Y-m-d');
 
         return view('home.reservation',[
             'pack'=>$pack,
+            'date_max'=>$date_max,
         ]);
     }
 
@@ -106,5 +111,13 @@ class ReservationController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function cancel($id)
+    {
+        $data = Reservation::find($id);
+        $data->status="Cancelled";
+        $data->save();
+        return redirect()->route('reservation_index');
     }
 }

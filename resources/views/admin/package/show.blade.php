@@ -76,6 +76,24 @@
                                         <td>{{$data->price}}</td>
                                     </tr>
 
+                                    <!-- Extra -->
+                                    <tr>
+                                        <th style="width:10%;">Tour Max People</th>
+                                        <td>{{$data->max_people}}</td>
+                                    </tr>
+
+                                    <tr>
+                                        <th style="width:10%;">Tour Person</th>
+                                        <td>{{$data->num_people}}</td>
+                                    </tr>
+
+                                    <tr>
+                                        <th style="width:10%;">Extra Charge</th>
+                                        <td>{{$data->extra_charge}}</td>
+                                    </tr>
+
+
+
                                     <tr>
                                         <th style="width:10%;">Start Date</th>
                                         <td>{{$data->start_date}}</td>
@@ -108,6 +126,11 @@
                                     <tr>
                                         <th style="width:10%;">Status</th>
                                         <td>{{$data->status}}</td>
+                                    </tr>
+
+                                    <tr>
+                                        <th style="width:10%;";>Uploaded By</th>
+                                        <td>{{$data->user->name}}</td>
                                     </tr>
 
                                     <tr>
