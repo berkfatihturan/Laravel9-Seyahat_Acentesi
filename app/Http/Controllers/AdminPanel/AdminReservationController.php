@@ -105,4 +105,12 @@ class AdminReservationController extends Controller
     {
         //
     }
+
+    public function cancel($id,$status)
+    {
+        $data = Reservation::find($id);
+        $data->status="Cancelled";
+        $data->save();
+        return redirect()->route('admin_reservation_index',['status'=>$status]);
+    }
 }

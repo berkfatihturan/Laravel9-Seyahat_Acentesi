@@ -61,11 +61,17 @@ class ReservationController extends Controller
         $data->person = $request->input('person');
         $data->price = $request->input('price');
         $data->amount = $request->input('amount');
+
+        $data->address = $request->input('address');
+        $data->id_number = $request->input('tcnumber');
+        $data->email = $request->input('email');
+        $data->phone_number = $request->input('phone_number');
+
         $data->note = $request->input('note');
         $data->ip = request()->ip();
         $data->save();
 
-        return redirect()->route('reservation_create',['pid'=>$data->package_id])->with('info','Your message has been sent , Thank You. ');
+        return redirect()->route('reservation_index')->with('info','Your reservation request has been sent successfully , Thank You. ');
     }
 
     /**

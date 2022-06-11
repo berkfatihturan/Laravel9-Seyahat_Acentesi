@@ -222,6 +222,7 @@ Route::middleware(['auth'])->group(function (){
             /* -update- */
             Route::post('/update/{id}', 'update')->name('update');
             /* -Add Role- */
+            Route::get('/cancel/{id}/{status}', 'cancel')->name('cancel');
             /* -Delete Role- */
             Route::get('/deleteRole/{rid}/{uid}', 'deleteRole')->name('deleteRole');
             /* -delete- */

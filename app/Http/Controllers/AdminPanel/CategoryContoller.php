@@ -30,6 +30,16 @@ class CategoryContoller extends Controller
         return CategoryContoller::getParentsTree($parent,$title);
     }
 
+    public static function getCategory($category,$title){
+        if ($category->parent_id == 0){
+            return $title;
+        }
+
+        $parent= Category::find($category->parent_id);
+        $title = $title;
+        return CategoryContoller::getCategory($parent,$title);
+    }
+
 
 
     public function index()

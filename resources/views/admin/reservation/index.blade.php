@@ -39,7 +39,7 @@
                                         <th style="width: 5%">Status</th>
                                         <th style="width: 5%">Show</th>
                                         @if($R_status=='New')
-                                        <th style="width: 5%">Delete</th>
+                                        <th style="width: 5%">Cancel</th>
                                         @endif
                                     </tr>
                                     </thead>
@@ -56,7 +56,7 @@
                                             <td>{{$rs->status}}</td>
                                             <td> <a href="{{route('admin_reservation_show',['id'=>$rs->id])}}" onclick="return !window.open(this.href,'','width=1000,height=800')" class="btn btn-block btn-success btn-sm">Show</a> </td>
                                             @if($R_status=='New')
-                                            <td> <a href="{{route('admin_reservation_destroy',['id'=>$rs->id])}}" class="btn btn-block btn-danger btn-sm">Delete</a></td>
+                                            <td> <a href="{{route('admin_reservation_cancel',['id'=>$rs->id,'status'=>$R_status])}}" class="btn btn-block btn-danger btn-sm">Cancel</a></td>
                                             @endif
                                         </tr>
                                     @endforeach

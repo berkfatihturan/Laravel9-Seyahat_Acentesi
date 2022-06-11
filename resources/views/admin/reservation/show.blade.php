@@ -80,12 +80,32 @@
                                         <td>{{$data->amount}}</td>
                                     </tr>
 
+                                    <tr style="margin-bottom: 10px">
+                                        <th style="width:10%;">phone_number</th>
+                                        <td>{{$data->phone_number}}</td>
+                                    </tr>
+
+                                    <tr>
+                                        <th style="width:10%;">email</th>
+                                        <td>{{$data->email}}</td>
+                                    </tr>
+
+                                    <tr>
+                                        <th style="width:10%;">id_number</th>
+                                        <td>{{$data->id_number}}</td>
+                                    </tr>
+
+                                    <tr>
+                                        <th style="width:10%;">address</th>
+                                        <td>{{$data->address}}</td>
+                                    </tr>
+
                                     <form id="checkout-form" action="{{route("admin_reservation_update",['id'=>$data->id])}}" method="post">
                                         @csrf
                                         <tr>
                                             <th style="width:10%;">Note</th>
                                             <td>
-                                                <textarea name="note">{{$data->note}}</textarea>
+                                                <textarea cols="100" rows="10" name="note">{{$data->note}}</textarea>
                                             </td>
                                         </tr>
 

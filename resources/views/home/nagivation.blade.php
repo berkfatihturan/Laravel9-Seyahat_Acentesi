@@ -82,24 +82,25 @@
                                             <div class="col-xxs-12 col-xs-6 mt alternate">
                                                 <div class="input-field">
                                                     <label for="date-end">Check Out:</label>
-                                                    <input type="text" class="form-control" id="date-end" placeholder="mm/dd/yyyy"/>
+                                                    <input type="date" class="form-control" id="end_date" name="end_date" placeholder="mm/dd/yyyy"/>
                                                 </div>
                                             </div>
                                             <div class="col-sm-12 mt">
                                                 <section>
-                                                    <label for="class">Class:</label>
-                                                    <select class="cs-select cs-skin-border">
-                                                        <option value="" disabled selected>Economy</option>
-                                                        <option value="economy">Economy</option>
-                                                        <option value="first">First</option>
-                                                        <option value="business">Business</option>
+                                                    <label for="class">Category:</label>
+                                                    <select name="category_id" class="cs-select cs-skin-border">
+                                                        @foreach($CategoryList as $rs)
+                                                            <option value="{{$rs->id}}">
+                                                                {{\App\Http\Controllers\AdminPanel\CategoryContoller::getCategory($rs,$rs->title)}}
+                                                            </option>
+                                                        @endforeach
                                                     </select>
                                                 </section>
                                             </div>
                                             <div class="col-xxs-12 col-xs-6 mt">
                                                 <section>
                                                     <label for="class">Adult:</label>
-                                                    <select class="cs-select cs-skin-border">
+                                                    <select name="mum_people_adult" class="cs-select cs-skin-border">
                                                         <option value="" disabled selected>1</option>
                                                         <option value="1">1</option>
                                                         <option value="2">2</option>
@@ -111,7 +112,7 @@
                                             <div class="col-xxs-12 col-xs-6 mt">
                                                 <section>
                                                     <label for="class">Children:</label>
-                                                    <select class="cs-select cs-skin-border">
+                                                    <select name="mum_people_children" class="cs-select cs-skin-border">
                                                         <option value="" disabled selected>1</option>
                                                         <option value="1">1</option>
                                                         <option value="2">2</option>
@@ -121,7 +122,7 @@
                                                 </section>
                                             </div>
                                             <div class="col-xs-12">
-                                                <input type="submit" class="btn btn-primary btn-block" value="Search Flight">
+                                                <input type="submit" class="btn btn-primary btn-block" value="Search">
                                             </div>
                                         </form>
                                     </div>

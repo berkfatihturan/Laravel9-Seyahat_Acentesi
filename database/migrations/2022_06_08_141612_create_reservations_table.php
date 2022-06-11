@@ -21,6 +21,12 @@ return new class extends Migration
             $table->integer('person')->nullable();
             $table->float('price')->nullable();
             $table->float('amount')->nullable();
+
+            $table->string('email',50)->nullable();
+            $table->string('phone',20)->nullable();
+            $table->string('id_number',20)->nullable();
+            $table->string('address')->nullable();
+
             $table->string('IP',20)->nullable();
             $table->text('note')->nullable();
             $table->string('status',6)->default('New');

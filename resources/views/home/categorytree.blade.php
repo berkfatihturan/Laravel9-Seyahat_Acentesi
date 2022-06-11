@@ -2,7 +2,7 @@
 
     @if(count($subcategory->children))
 
-        <div class="col-sm-4" style="margin-right: 10px">
+        <div class="col-lg-6" style="margin-right: 10px">
             <span class="sub-title">{{$subcategory->title}}</span>
             <ol class="sub-list">
                 @include('home.categorytree',['children'=>$subcategory->children])

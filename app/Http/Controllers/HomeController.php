@@ -24,10 +24,12 @@ class HomeController extends Controller
     public function index(){
         $data = Package::where('status','=','True')->get();
         $dataNavImage=Package::where('category_id', '=', 99)->get();
+        $CategoryList = Category::all();
         $dataCategory = Category::where('parent_id', '=', 0)->where('status','=','True')->limit(4)->get();
         $dataSettings = Setting::first();
         return view('home.index',[
             'data'=>$data,
+            'CategoryList'=>$CategoryList,
             'dataCategory'=>$dataCategory,
             'dataSettings'=>$dataSettings,
             'page'=>"home",
@@ -39,7 +41,12 @@ class HomeController extends Controller
     /*deneme*/
     public function search(Request $request){
         $dataSettings = Setting::first();
-        $data = Package::where('start_date','>=',$request->start_date)->where('status','=','True')->get();
+        $data = Package::where('start_date','>=',$request->start_date)
+
+            ->where('status','=','True')
+            ->where('category_id','=',$request->category_id)
+            ->where('num_people','>=',($request->mum_people_adult+$request->mum_people_children))
+            ->get();
         return view('home.search-list',[
             'data'=>$data,
             'dataSettings'=>$dataSettings,

@@ -58,7 +58,7 @@
                         <div class="feature-copy">
                             <h3>{{$rs->title}}</h3>
                             <p>{{$rs->keywords}}</p>
-                            <p><a href="#">Learn More</a></p>
+                            <p><a href="{{route('home_categorypackage',['id'=>$rs->id, 'slug'=>$rs->title])}}">Learn More</a></p>
                         </div>
                     </div>
                 </div>

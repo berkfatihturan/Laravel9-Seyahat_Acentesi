@@ -17,21 +17,27 @@
                     <li class="@if(isset($page)) @if($page=='packages') active @endif @endif">
                         <a href="vacation.html" class="fh5co-sub-ddown active">Packages</a>
                         <ul class="fh5co-sub-menu">
-                            @foreach($parentCategory as $rs)
-                            <li>
-                                <a href="#">{{$rs->title}}</a>
-                                <ul class="fh5co-sub-menu list-inline" style="width: 45vw;">
-                                    <li style="width: 100%">
-                                        <div class="row" style="width: 100%">
-                                             @if(count($rs->children))
-                                                 @include('home.categorytree',['children'=>$rs->children])
-                                            @endif
-                                        </div>
-                                    </li>
-                                </ul>
 
-                            </li>
+                            @foreach($parentCategory as $rs)
+                                <li>
+
+                                    <a href="#">{{$rs->title}}</a>
+
+                                        <ul class="fh5co-sub-menu list-inline" style="width: 41vw">
+
+                                                <li style="width: 100%">
+                                                    <div class="row" style="width: 100%">
+                                                        @if(count($rs->children))
+                                                            @include('home.categorytree',['children'=>$rs->children])
+                                                        @endif
+                                                    </div>
+                                                </li>
+                                        </ul>
+
+
+                                </li>
                             @endforeach
+
                             <!--
                             <li><a href="#">CSS3 &amp; HTML5</a></li>
                             <li><a href="#">Angular JS</a></li>

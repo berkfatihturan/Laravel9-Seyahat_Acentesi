@@ -25,10 +25,18 @@
                 @include('home.user.usermenu')
             </div>
             <div class="col-md-10 user-text">
+
+                @if(\Illuminate\Support\Facades\Session::get('info')!=null)
+                    <div class="form-group input-group " style="width: 100%; text-align: center">
+                        <div class="alert alert-info" style="margin-bottom: 5px; text-align: center">
+                            <strong>{{\Illuminate\Support\Facades\Session::get('info')}}</strong>
+                        </div>
+                    </div>
+                @endif
+
                 @foreach($reservation as $rs)
                 <div class="well well-custume" style="margin-bottom: 15px; padding-bottom: 2px" >
                     <div class="row">
-
                         <div class="col-md-3" style="padding-right: 8px">
                             <img src="{{\Illuminate\Support\Facades\Storage::url($rs->package->image)}}" class="img-responsive " alt="" style="border-radius: 5px;  object-fit:cover;">
 
@@ -99,7 +107,38 @@
 
                         <div class="collapse col-md-12 " id="detail-text-{{$rs->id}}" style="margin-bottom: 10px">
                             <div>
-                                {{$rs->note}}
+
+                                <div class="table-responsive">
+                                    <table class="table table-striped table-bordered table-hover" style="">
+
+                                        <tr style="margin-bottom: 10px">
+                                            <th style="width:10%;">phone_number</th>
+                                            <td>{{$rs->phone_number}}</td>
+                                        </tr>
+
+                                        <tr>
+                                            <th style="width:10%;">email</th>
+                                            <td>{{$rs->email}}</td>
+                                        </tr>
+
+                                        <tr>
+                                            <th style="width:10%;">id_number</th>
+                                            <td>{{$rs->id_number}}</td>
+                                        </tr>
+
+                                        <tr>
+                                            <th style="width:10%;">address</th>
+                                            <td>{{$rs->address}}</td>
+                                        </tr>
+
+                                        <tr>
+                                            <th style="width:10%;">Note</th>
+                                            <td>{{$rs->note}}</td>
+                                        </tr>
+
+                                    </table>
+                                </div>
+
                             </div>
                         </div>
                     </div>
