@@ -60,6 +60,7 @@ Route::middleware(['auth'])->group(function (){
     Route::get('/reservations/store/{pid}', [ReservationController::class,'store'])->name('reservation-store');
 });
 
+
 */
 
 Route::middleware(['auth'])->group(function (){
@@ -70,8 +71,7 @@ Route::middleware(['auth'])->group(function (){
         Route::get('/','index')->name('index');
         Route::get('/comments','comments')->name('comments');
         Route::get('/commentsDestroy/{id}','commentDestroy')->name('commentsdestroy');
-        Route::post('/commentUpdate/{id}','commentUpdate')->name("commentUpdate");
-
+        Route::post('/commentsUpdate/{id}','commentUpdate')->name('commentUpdate');
         Route::get('/mypackage','mypackage')->name("mypackage");
     });
 
@@ -79,6 +79,7 @@ Route::middleware(['auth'])->group(function (){
         Route::get('/','index')->name('index');
         Route::get('/create/{pid}','create')->name('create');
         Route::post('/store/{pid}','store')->name('store');
+        Route::post('/update/{id}','update')->name('update');
         Route::get('/cancel/{id}', 'cancel')->name('cancel');
     });
 
@@ -95,7 +96,7 @@ Route::middleware(['auth'])->group(function (){
         Route::get('/mainStyleSetting',[AdminHomeController::class,'mainStyleSetting'])->name('mainStyleSetting');
         Route::get('/mainStyleSetting_show/{id}',[AdminHomeController::class,'mainStyleSetting_Show'])->name('mainStyleSetting_show');
         Route::post('/mainStyleSetting_Store/{pid}',[AdminHomeController::class,'mainStyleSetting_Store'])->name('mainStyleSetting_store');
-
+        Route::get('/mainStyleSetting_destroy/{id}',[AdminHomeController::class,'mainStyleSetting_destroy'])->name('mainStyleSetting_destroy');
 
         /* Admin Controller Panel Routes*/
         Route::prefix('/category')->name("category_")->controller(AdminCategoryController::class)->group(function (){

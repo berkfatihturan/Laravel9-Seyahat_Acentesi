@@ -2,7 +2,7 @@
     <div class="container">
         <div class="nav-header">
             <a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle dark"><i></i></a>
-            <h1 id="fh5co-logo"><a href="/"><i class="icon-airplane"></i> {{\App\Models\Setting::getSettings()->title}} </a></h1>
+            <h1 id="fh5co-logo"><a class="active" href="/"><i class="icon-airplane"></i> {{\App\Models\Setting::getSettings()->title}} </a></h1>
             <!-- START #fh5co-menu-wrap -->
             @php
                 $parentCategory=\App\Http\Controllers\HomeController::maincategorylist();
@@ -15,7 +15,7 @@
                     </li>
 
                     <li class="@if(isset($page)) @if($page=='packages') active @endif @endif">
-                        <a href="vacation.html" class="fh5co-sub-ddown active">Packages</a>
+                        <a href="{{route('home_list')}}" class="fh5co-sub-ddown">Packages</a>
                         <ul class="fh5co-sub-menu">
 
                             @foreach($parentCategory as $rs)
@@ -34,7 +34,6 @@
                                                 </li>
                                         </ul>
 
-
                                 </li>
                             @endforeach
 
@@ -46,7 +45,7 @@
                             -->
                         </ul>
                     </li>
-                    <li class="@if(isset($page)) @if($page=='faq') active @endif @endif"><a href="/faq">FAQ</a></li>
+                    <li class=""><a class="@if(isset($page)) @if($page=='faq') active @endif @endif" href="/faq">FAQ</a></li>
                     <li class="@if(isset($page)) @if($page=='references') active @endif @endif"><a href="{{route('references')}}">References</a></li>
                     <li class="@if(isset($page)) @if($page=='about') active @endif @endif"><a href="{{route('about')}}">About Us</a></li>
                     <li class="@if(isset($page)) @if($page=='contact') active @endif @endif"><a href="{{route('contact')}}">Contact</a></li>

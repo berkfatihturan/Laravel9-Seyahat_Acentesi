@@ -187,6 +187,9 @@ figure {
     heifght: inherit;
     padding: 3em 0;
   }
+    .fh5co-cover .desc{
+        width: 100% !important;
+    }
 }
 .fh5co-cover .desc {
   top: 40%;

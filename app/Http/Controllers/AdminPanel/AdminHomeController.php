@@ -6,10 +6,12 @@ use App\Http\Controllers\Controller;
 use App\Models\Image;
 use App\Models\Package;
 use App\Models\Setting;
+use App\Models\Slider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Storage;
 
 
 class AdminHomeController extends Controller
@@ -66,10 +68,9 @@ class AdminHomeController extends Controller
         $data->smtppassword = $request->input('smtppassword');
         $data->smtpport = $request->input('smtpport');
         $data->facebook = $request->input('facebook');
-        $data->instagram = $request->input('instagram');
+        $data->instagram = $request->input('ınstagram');
         $data->twitter = $request->input('twitter');
         $data->youtube = $request->input('youtube');
-        $data->youtube = $request->input('');
         $data->aboutus = $request->input('aboutus');
         $data->contact = $request->input('contact');
         $data->references = $request->input('references');
@@ -133,25 +134,25 @@ class AdminHomeController extends Controller
     /*deneme*/
 
     public function mainStyleSetting(){
-        $slider=Package::where('category_id',99)->get();
-        $image = DB::table('images')->where('package_id',99)->get();
+        $slider=Slider::all();
         return view('admin.main-style-setting',[
             'slider'=>$slider,
-            'image'=>$image,
             'cal'=>0,
         ]);
     }
 
     public function mainStyleSetting_Show($id){
-        $img=Image::find($id);
+        $img=Slider::find($id);
+        $pack=Package::all();
         return view('admin.main-style-setting_show',[
             'img'=>$img,
+            'pack'=>$pack
         ]);
     }
 
     public function mainStyleSetting_Store(Request $request,$pid){
-        $data = new Image();
-        $data->package_id=$pid;
+        $data = new Slider();
+        $data->package_id=$request->package_id;
         $data->title=$request->title;
         $data->slider_text=$request->slider_text;
         if($request->file('image')){
@@ -161,5 +162,19 @@ class AdminHomeController extends Controller
         $data->save();
         return redirect()->route('admin_mainStyleSetting');
     }
+
+    public function mainStyleSetting_destroy($id)
+    {
+        $data=Slider::find($id);
+        if ($data->image && Storage::disk('public')->exists($data->image)){
+            Storage::delete($data->image);
+        }
+
+
+        $data->delete();
+        return redirect()->route('admin_mainStyleSetting');
+
+    }
+
 
 }

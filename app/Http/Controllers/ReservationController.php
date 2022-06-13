@@ -37,6 +37,7 @@ class ReservationController extends Controller
      */
     public function create($pid)
     {
+
         $pack=Package::find($pid);
         $date_max=now()->format('Y-m-d');
 
@@ -44,6 +45,7 @@ class ReservationController extends Controller
             'pack'=>$pack,
             'date_max'=>$date_max,
         ]);
+
     }
 
     /**
@@ -54,7 +56,10 @@ class ReservationController extends Controller
      */
     public function store(Request $request,$pid)
     {
+
         $data = new Reservation();
+
+
         $data->user_id = Auth::user()->id;
         $data->package_id = $pid;
         $data->start_date = $request->input('start_date');
@@ -70,6 +75,7 @@ class ReservationController extends Controller
         $data->note = $request->input('note');
         $data->ip = request()->ip();
         $data->save();
+
 
         return redirect()->route('reservation_index')->with('info','Your reservation request has been sent successfully , Thank You. ');
     }

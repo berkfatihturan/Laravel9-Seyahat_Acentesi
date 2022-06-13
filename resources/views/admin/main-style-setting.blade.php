@@ -34,21 +34,6 @@
 
             <div class="panel-body">
 
-                <ul class="nav nav-tabs">
-                    <li class="active"><a href="#general" data-toggle="tab">Slider</a>
-                    </li>
-                    <li class=""><a href="#smtpemail" data-toggle="tab">Smtp Email</a>
-                    </li>
-                    <li class=""><a href="#socialmedia" data-toggle="tab">Social Media</a>
-                    </li>
-                    <li class=""><a href="#aboutus" data-toggle="tab">About Us</a>
-                    </li>
-                    <li class=""><a href="#contact" data-toggle="tab">Contact Page</a>
-                    </li>
-                    <li class=""><a href="#references" data-toggle="tab">References</a>
-                    </li>
-                </ul>
-
                 <div class="tab-content">
                     <div class="tab-pane fade active in " id="general">
 
@@ -69,6 +54,11 @@
                                         <input class="form-control" type="text" placeholder="Title" name="title" required>
                                     </div>
 
+                                    <div class="dropdown-item">
+                                        <label>Package Id</label>
+                                        <input class="form-control" type="number" placeholder="package_id" name="package_id" required>
+                                    </div>
+
                                     <div class="form-group" class="dropdown-item">
                                         <label>Image</label>
                                         <input class="form-control" type="file" name="image" required>
@@ -85,7 +75,7 @@
                         </div>
 
                         <div id="port-folio">
-                            @foreach($image as $rs)
+                            @foreach($slider as $rs)
                                 @if($cal%3==0)
                                     <div class="row ">
                                         @endif
@@ -93,7 +83,7 @@
                                             <div class="portfolio-item awesome mix_all" data-cat="awesome" style="display: inline-block; opacity: 1; position: relative;">
 
                                                 <div style="position: absolute; top:10px; right:10px;">
-                                                    <a href="{{route('admin_image_destroy',['pid'=>99,'id'=>$rs->id])}}" class="btn d-print-inline btn-danger btn-sm">Delete</a>
+                                                    <a href="{{route('admin_mainStyleSetting_destroy',['id'=>$rs->id])}}" class="btn d-print-inline btn-danger btn-sm">Delete</a>
                                                 </div>
 
                                                 <div style="position: absolute; top:10px; left:10px;">
@@ -110,6 +100,8 @@
                                                 <div class="overlay">
                                                     <p>
                                                         {{++$cal}} - {{$rs->title}}
+                                                    <br/>
+                                                        <a href="{{route('admin_package_show',['id'=>$rs->package->id])}}">{{$rs->package->title}}</a>
                                                     </p>
                                                 </div>
                                             </div>

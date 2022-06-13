@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\Image;
 use App\Models\Package;
 use App\Models\Setting;
+use App\Models\Slider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
@@ -96,9 +97,10 @@ class ImageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,$id,)
+    public function update(Request $request,$id)
     {
-        $data = Image::find($id);
+        $data = Slider::find($id);
+        $data->package_id=$request->package_id;
         $data->title = $request->title;
         $data->slider_text = $request->slider_text;
         if ($request->file('image')){

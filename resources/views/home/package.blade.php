@@ -31,6 +31,7 @@
                                     <h1>{{$pack->title}}</h1>
                                 </div>
                         </div>
+
                         <div class="hotel__region">
                             <i class="fa fa-map-marker" aria-hidden="true"></i> Mersin - Mersin Merkez
                             <a href="javascript:void(0);" class="map-link mapTriggerDetail">Haritada Görüntüle</a>

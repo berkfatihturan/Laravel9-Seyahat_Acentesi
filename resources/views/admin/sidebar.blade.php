@@ -9,7 +9,9 @@
                     <div class="inner-text" style="display: inline-block; position: absolute; top:auto; right: 10px;">
                         <span style="font-size: 18px;font-weight: 600">{{\Illuminate\Support\Facades\Auth::user()->name}}</span>
                         <br/>
-                        <small>Last Login : 2 Weeks Ago </small>
+                        <small>Last Login : 2 Weeks Ago <span>{{$us=\Illuminate\Support\Facades\Auth::user()->roles->first()->name}}</span>
+
+                        </small>
                     </div>
                 </div>
 

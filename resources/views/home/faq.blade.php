@@ -8,36 +8,55 @@
 @section('head')
     <link rel="stylesheet" href="{{asset('assets')}}/css/userpanel.css">
     <link rel="stylesheet" href="{{asset('assets')}}/css/package.css">
+    <link rel="stylesheet" href="{{asset('assets')}}/css/search.css">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 @endsection
-
 @section('content')
-    <div id="fh5co-tours" class="fh5co-section-gray">
-        <div class="container">
-            <div class="col-md-offset-2 text-center heading-section animate-box fadeInUp animated" style="margin:50px auto; margin-top: 0">
-                <h3 style="margin-bottom: 5px">FAQ</h3>
+
+    <div class="container">
+        @if(!$data->isEmpty())
+
+            <div class="row category-top">
+                <div class="col-md-8 col-md-offset-2 text-center heading-section animate-box fadeInUp animated mb-5 mt-2">
+                    <h3 class="category-top__title">FAQ</h3>
+                </div>
             </div>
 
-            <div class="panel-group">
+            <ul class="list-package" style="list-style: none;">
                 @foreach($data as $rs)
-                    <div class="panel panel-default" style="margin-bottom: 20px; box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;">
-                        <div class="panel-heading" style="background-color: #F78536; opacity: .7;">
-                            <h3 class="panel-title" style="text-align: center; color: white; opacity: 1">
-                                <a data-toggle="collapse" href="#{{$rs->id}}" onclick="deneme()">{{$rs->question}}</a>
-                            </h3>
+
+                    <div class="well well-custume" style="margin-bottom: 15px; padding: 10px; margin-bottom: 40px" >
+                        <div class="row">
+                            <div class="col-md-12" style="text-align: center">
+                                <a  href="#detail-text-{{$rs->id}}" data-toggle="collapse"> {{$rs->question}}</a>
+                            </div>
+
                         </div>
-                        <div class="collapse" id="{{$rs->id}}"style="height: 0px;">
-                            <div class="panel-body" style="text-align: center">
-                                {!! $rs->answer !!}
+
+
+                        <div class="row">
+                            <div class="collapse col-md-12 " id="detail-text-{{$rs->id}}" style="margin: 10px 0; padding: 5px">
+                                {!! $rs->answer  !!}
                             </div>
                         </div>
                     </div>
+
                 @endforeach
-            </div>
-        </div>
+            </ul>
+            <!---
+            @if(isset($category))
+                <div class="category-bottom">
+                    <span class="category-bottom__descriptions">{{$category->description}}</span>
+                </div>
+            @endif
+            -->
+        @else
+            <div class="cant-find"> SORRY, THERE IS NO PACKAGE MATCHING YOUR CRITERIA. </div>
+        @endif
     </div>
+
 @endsection
 
 @section('foot')

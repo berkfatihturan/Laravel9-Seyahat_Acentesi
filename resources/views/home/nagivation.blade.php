@@ -8,23 +8,24 @@
             <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="height: 100%;">
                 <ol class="carousel-indicators" style=" margin: 0 auto;">
                     @foreach($dataNavImage as $rs)
-                        @foreach($rs->images as $img)
+
                             <li data-target="#carouselExampleIndicators" data-slide-to="{{$cnt}}" class="@if($cnt++==0) active @endif"></li>
-                        @endforeach
+
                     @endforeach
                 </ol>
                 <div class="carousel-inner {{$cnt=0}}" style="height: 100%">
-                    @foreach($dataNavImage as $rs)
-                        @foreach($rs->images as $img)
+
+                        @foreach($dataNavImage as $img)
                             <div  class="carousel-item @if($cnt++==0) active @endif" style="height: 100%">
                                 <div  class="crousel-item-index row" style="background-image:url({{\Illuminate\Support\Facades\Storage::url($img->image)}})">
                                     <div  class="crousel-item-index__detail col-sm-6 col-sm-push-1 col-md-6 col-md-push-1 desc" style="z-index: 3">
                                         {!! $img->slider_text !!}
+                                        <a href="{{route('home_package',['pid'=>$img->package->id])}}" class="btn btn-primary btn-lg">See More</a>
                                     </div>
                                 </div><!--<img class="d-block w-100" style="height: 100%;width: 100%" src="{{\Illuminate\Support\Facades\Storage::url($img->image)}}" alt="First slide">-->
                             </div>
                         @endforeach
-                    @endforeach
+
                 </div>
             </div>
             <!--
@@ -35,23 +36,19 @@
             <!-- <p><a class="btn btn-primary btn-lg" href="#">Get Started</a></p> -->
         </div>
 
-        <div class="desc">
+        <div class="desc" style="width: 45vw">
             <div class="container">
-                <div class="row" style="width: 100%">
-                    <div class="col-sm-5 col-md-5">
+                <div class="row deneme" style="width: 100%">
+                    <div class="col-sm-4 col-md-5"></div>
+                    <div class="col-sm-8 col-md-6" style="max-width: 500px;">
                         <div class="tabulation animate-box">
 
                             <!-- Nav tabs -->
                             <ul class="nav nav-tabs" role="tablist">
                                 <li role="presentation" class="active">
-                                    <a href="#flights" aria-controls="flights" role="tab" data-toggle="tab">Flights</a>
+                                    <a href="#flights" aria-controls="flights" role="tab" data-toggle="tab">Packages</a>
                                 </li>
-                                <li role="presentation">
-                                    <a href="#hotels" aria-controls="hotels" role="tab" data-toggle="tab">Hotels</a>
-                                </li>
-                                <li role="presentation">
-                                    <a href="#packages" aria-controls="packages" role="tab" data-toggle="tab">Packages</a>
-                                </li>
+
                             </ul>
 
                             <!-- Tab panes -->
@@ -61,30 +58,7 @@
                                     <div class="row">
                                         <form role="form" action="/search" method="post">
                                             @csrf
-                                            <div class="col-xxs-12 col-xs-6 mt">
-                                                <div class="input-field">
-                                                    <label for="from">From:</label>
-                                                    <input type="text" class="form-control" id="from-place" placeholder="Los Angeles, USA"/>
-                                                </div>
-                                            </div>
-                                            <div class="col-xxs-12 col-xs-6 mt">
-                                                <div class="input-field">
-                                                    <label for="from">To:</label>
-                                                    <input type="text" class="form-control" id="to-place" placeholder="Tokyo, Japan"/>
-                                                </div>
-                                            </div>
-                                            <div class="col-xxs-12 col-xs-6 mt alternate">
-                                                <div class="input-field">
-                                                    <label for="date-start">Check In:</label>
-                                                    <input type="date" class="form-control" id="start_date" name="start_date" placeholder="mm/dd/yyyy"/>
-                                                </div>
-                                            </div>
-                                            <div class="col-xxs-12 col-xs-6 mt alternate">
-                                                <div class="input-field">
-                                                    <label for="date-end">Check Out:</label>
-                                                    <input type="date" class="form-control" id="end_date" name="end_date" placeholder="mm/dd/yyyy"/>
-                                                </div>
-                                            </div>
+
                                             <div class="col-sm-12 mt">
                                                 <section>
                                                     <label for="class">Category:</label>
@@ -97,6 +71,20 @@
                                                     </select>
                                                 </section>
                                             </div>
+
+                                            <div class="col-xxs-12 col-xs-6 mt alternate">
+                                                <div class="input-field">
+                                                    <label for="date-start">Check In:</label>
+                                                    <input type="date" class="form-control" id="start_date" name="start_date" placeholder="mm/dd/yyyy"/>
+                                                </div>
+                                            </div>
+                                            <div class="col-xxs-12 col-xs-6 mt alternate">
+                                                <div class="input-field">
+                                                    <label for="date-end">Check Out:</label>
+                                                    <input type="date" class="form-control" id="end_date" name="end_date" placeholder="mm/dd/yyyy"/>
+                                                </div>
+                                            </div>
+
                                             <div class="col-xxs-12 col-xs-6 mt">
                                                 <section>
                                                     <label for="class">Adult:</label>

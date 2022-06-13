@@ -8,6 +8,7 @@ use App\Models\Faq;
 use App\Models\Image;
 use App\Models\Message;
 use App\Models\Setting;
+use App\Models\Slider;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Models\Package;
@@ -22,13 +23,15 @@ class HomeController extends Controller
     }
 
     public function index(){
-        $data = Package::where('status','=','True')->get();
-        $dataNavImage=Package::where('category_id', '=', 99)->get();
+        $dataHot = Package::orderBy('updated_at', 'DESC')->limit(6)->get();
+        $dataALL = Package::limit(9)->get();
+        $dataNavImage=Slider::all();
         $CategoryList = Category::all();
-        $dataCategory = Category::where('parent_id', '=', 0)->where('status','=','True')->limit(4)->get();
+        $dataCategory = Category::where('parent_id', '!=', 0)->where('status','=','True')->limit(4)->get();
         $dataSettings = Setting::first();
         return view('home.index',[
-            'data'=>$data,
+            'dataHot'=>$dataHot,
+            'dataAll'=>$dataALL,
             'CategoryList'=>$CategoryList,
             'dataCategory'=>$dataCategory,
             'dataSettings'=>$dataSettings,
@@ -41,9 +44,8 @@ class HomeController extends Controller
     /*deneme*/
     public function search(Request $request){
         $dataSettings = Setting::first();
-        $data = Package::where('start_date','>=',$request->start_date)
-
-            ->where('status','=','True')
+        $data = Package::where('start_date','<=',$request->start_date)
+            ->where('end_date','>=',$request->end_date)
             ->where('category_id','=',$request->category_id)
             ->where('num_people','>=',($request->mum_people_adult+$request->mum_people_children))
             ->get();
@@ -141,7 +143,8 @@ class HomeController extends Controller
         return view('home.faq',[
             'data'=>$data,
             'dataSettings'=>$dataSettings,
-            'page'=>"faq",
+            'page'=>'faq',
+
         ]);
     }
 

@@ -8,6 +8,7 @@
 @section('head')
     <link rel="stylesheet" href="{{asset('assets')}}/css/userpanel.css">
     <link rel="stylesheet" href="{{asset('assets')}}/css/package.css">
+    <link rel="stylesheet" href="{{asset('assets')}}/css/search.css">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -18,10 +19,20 @@
     <div class="container">
         @if(!$data->isEmpty())
             @if(isset($category))
-                <div class="category-top">
-                    <h2 class="category-top__title">{{$category->title}}</h2>
-                    <span class="category-top__keywords">{{$category->keywords}}</span>
+                <div class="row category-top">
+                    <div class="col-md-8 col-md-offset-2 text-center heading-section animate-box fadeInUp animated mb-5 mt-2">
+                        <h3 class="category-top__title">{{$category->title}}</h3>
+                        <p class="category-top__keywords">{{$category->keywords}}</p>
+                    </div>
                 </div>
+            @else
+
+                <div class="row category-top">
+                    <div class="col-md-8 col-md-offset-2 text-center heading-section animate-box fadeInUp animated mb-5 mt-2">
+                        <h3 class="category-top__title">All Result</h3>
+                    </div>
+                </div>
+
             @endif
             <ul class="list-package" style="list-style: none">
                 @foreach($data as $rs)
@@ -31,8 +42,10 @@
                     @endphp
 
 
-                    <div class="well well-custume" style="margin-bottom: 15px; padding-bottom: 2px" >
+                    <div class="well well-custume" style="margin-bottom: 15px; padding-bottom: 2px; position: relative" >
                         <div class="row">
+
+                            <div class="btn btn-primary " style=" margin-right: 10px; padding: 6px; font-weight:600; position: absolute; left: 30px; top: 30px; font-size: 15px; z-index: 99">{{number_format($rs->comment->average('rate'),1)}}</div>
 
                             <div class="col-md-3" style="padding-right: 8px">
                                 <img src="{{\Illuminate\Support\Facades\Storage::url($rs->image)}}" class="img-responsive " alt="" style="border-radius: 5px;  object-fit:cover;">

@@ -26,7 +26,7 @@
                 </div>
             </div>
             <div class="row">
-                @foreach($data as $rs)
+                @foreach($dataHot as $rs)
                 <div class="col-md-4 col-sm-6 fh5co-tours animate-box" data-animate-effect="fadeIn" >
                     <div href="#"><img src="{{\Illuminate\Support\Facades\Storage::url($rs->image)}}" style="height: 400px" alt="Free HTML5 Website Template by FreeHTML5.co" class="img-responsive">
                         <div class="desc">
@@ -50,18 +50,18 @@
         <div class="container">
             <div class="row">
                 @foreach($dataCategory as $rs)
-                <div class="col-md-3 animate-box ">
-                    <div class="feature-left">
+                    <div class="col-md-3 animate-box ">
+                        <div class="feature-left">
 							<span class="icon">
 								<i class="icon-hotairballoon"></i>
 							</span>
-                        <div class="feature-copy">
-                            <h3>{{$rs->title}}</h3>
-                            <p>{{$rs->keywords}}</p>
-                            <p><a href="{{route('home_categorypackage',['id'=>$rs->id, 'slug'=>$rs->title])}}">Learn More</a></p>
+                            <div class="feature-copy">
+                                <h3>{{$rs->title}}</h3>
+                                <p>{{$rs->keywords}}</p>
+                                <p><a href="{{route('home_categorypackage',['id'=>$rs->id, 'slug'=>$rs->title])}}">Learn More</a></p>
+                            </div>
                         </div>
                     </div>
-                </div>
                 @endforeach
             </div>
         </div>
@@ -158,108 +158,32 @@
         </div>
     </div>
 
-    <div id="fh5co-blog-section" class="fh5co-section-gray">
+    <br/>
+
+    <div id="fh5co-tours" class="fh5co-section-gray">
         <div class="container">
             <div class="row">
                 <div class="col-md-8 col-md-offset-2 text-center heading-section animate-box">
-                    <h3>Recent From Blog</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit est facilis maiores, perspiciatis accusamus asperiores sint consequuntur debitis.</p>
-                </div>
-            </div>
-        </div>
-        <div class="container">
-            <div class="row row-bottom-padded-md">
-                <div class="col-lg-4 col-md-4 col-sm-6">
-                    <div class="fh5co-blog animate-box">
-                        <a href="#"><img class="img-responsive" src="{{asset('assets')}}/images/place-1.jpg" alt=""></a>
-                        <div class="blog-text">
-                            <div class="prod-title">
-                                <h3><a href="#">30% Discount to Travel All Around the World</a></h3>
-                                <span class="posted_by">Sep. 15th</span>
-                                <span class="comment"><a href="">21<i class="icon-bubble2"></i></a></span>
-                                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                                <p><a href="#">Learn More...</a></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-6">
-                    <div class="fh5co-blog animate-box">
-                        <a href="#"><img class="img-responsive" src="{{asset('assets')}}/images/place-2.jpg" alt=""></a>
-                        <div class="blog-text">
-                            <div class="prod-title">
-                                <h3><a href="#">Planning for Vacation</a></h3>
-                                <span class="posted_by">Sep. 15th</span>
-                                <span class="comment"><a href="">21<i class="icon-bubble2"></i></a></span>
-                                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                                <p><a href="#">Learn More...</a></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="clearfix visible-sm-block"></div>
-                <div class="col-lg-4 col-md-4 col-sm-6">
-                    <div class="fh5co-blog animate-box">
-                        <a href="#"><img class="img-responsive" src="{{asset('assets')}}/images/place-3.jpg" alt=""></a>
-                        <div class="blog-text">
-                            <div class="prod-title">
-                                <h3><a href="#">Visit Tokyo Japan</a></h3>
-                                <span class="posted_by">Sep. 15th</span>
-                                <span class="comment"><a href="">21<i class="icon-bubble2"></i></a></span>
-                                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                                <p><a href="#">Learn More...</a></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="clearfix visible-md-block"></div>
-            </div>
-
-            <div class="col-md-12 text-center animate-box">
-                <p><a class="btn btn-primary btn-outline btn-lg" href="#">See All Post <i class="icon-arrow-right22"></i></a></p>
-            </div>
-
-        </div>
-    </div>
-    <!-- fh5co-blog-section -->
-    <div id="fh5co-testimonial" style="background-images:url({{asset('assets')}}/imagess/img_bg_1.jpg);">
-        <div class="container">
-            <div class="row animate-box">
-                <div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
-                    <h2>Happy Clients</h2>
+                    <h3>See More Tours</h3>
+                    <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-4">
-                    <div class="box-testimony animate-box">
-                        <blockquote>
-                            <span class="quote"><span><i class="icon-quotes-right"></i></span></span>
-                            <p>&ldquo;Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.&rdquo;</p>
-                        </blockquote>
-                        <p class="author">John Doe, CEO <a href="http://freehtml5.co/" target="_blank">FREEHTML5.co</a> <span class="subtext">Creative Director</span></p>
+                @foreach($dataAll as $rs)
+                    <div class="col-md-4 col-sm-6 fh5co-tours animate-box" data-animate-effect="fadeIn" >
+                        <div href="#"><img src="{{\Illuminate\Support\Facades\Storage::url($rs->image)}}" style="height: 400px" alt="Free HTML5 Website Template by FreeHTML5.co" class="img-responsive">
+                            <div class="desc">
+                                <span></span>
+                                <h3>{{$rs->title}}</h3>
+                                <span>{{$rs->nights}} nights </span>
+                                <span class="price">{{$rs->price}}</span>
+                                <a class="btn btn-primary btn-outline" href="/package/{{$rs->id}}">See Detail<i class="icon-arrow-right22"></i></a>
+                            </div>
+                        </div>
                     </div>
-
-                </div>
-                <div class="col-md-4">
-                    <div class="box-testimony animate-box">
-                        <blockquote>
-                            <span class="quote"><span><i class="icon-quotes-right"></i></span></span>
-                            <p>&ldquo;Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.&rdquo;</p>
-                        </blockquote>
-                        <p class="author">John Doe, CEO <a href="http://freehtml5.co/" target="_blank">FREEHTML5.co</a> <span class="subtext">Creative Director</span></p>
-                    </div>
-
-
-                </div>
-                <div class="col-md-4">
-                    <div class="box-testimony animate-box">
-                        <blockquote>
-                            <span class="quote"><span><i class="icon-quotes-right"></i></span></span>
-                            <p>&ldquo;Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.&rdquo;</p>
-                        </blockquote>
-                        <p class="author">John Doe, Founder <a href="#">FREEHTML5.co</a> <span class="subtext">Creative Director</span></p>
-                    </div>
-
+                @endforeach
+                <div class="col-md-12 text-center animate-box">
+                    <p><a class="btn btn-primary btn-outline btn-lg" href="/list">See All Offers <i class="icon-arrow-right22"></i></a></p>
                 </div>
             </div>
         </div>

@@ -48,7 +48,7 @@
                             <div class="row justify-content-between text-left">
                                 <div class="form-group col-12 flex-column d-flex">
                                     <label class="form-control-label px-3">Number of People<span class="text-danger"> *</span></label>
-                                    <input type="number" id="person-form" name="person" value="1" min="1" max="{{$pack->max_people}}" onclick="getPerson()" onblur="validate(6)" required>
+                                    <input type="number" id="person-form" name="person" min="1" max="{{$pack->max_people}}" onclick="getPerson()" onblur="validate(6)" required>
                                     <label style="font-size: 12px; font-weight: 300; opacity: .6; padding-left: 10px; margin-bottom: 0">*This package can be purchased for a maximum of {{$pack->max_people}} people at a time. There is an additional fee of {{$pack->extra_charge}}$ per person for more than {{$pack->num_people}} people in the package.</label>
                                     <script type='text/javascript'>
                                         function getPerson(){
@@ -81,7 +81,7 @@
                             <div class="row justify-content-between text-left">
                                 <div class="form-group col-sm-6 flex-column d-flex">
                                     <label class="form-control-label px-3">First name<span class="text-danger"> *</span></label>
-                                    <input type="text" id="name" name="fname" placeholder="Enter your first name" onblur="validate(1)" value="{{\Illuminate\Support\Facades\Auth::user()->name}}">
+                                    <input type="text" id="name" name="fname" placeholder="Enter your first name" onblur="validate(1)" value="{{\Illuminate\Support\Facades\Auth::user()->name}}" readonly>
                                 </div>
                                 <div class="form-group col-sm-6 flex-column d-flex">
                                     <label class="form-control-label px-3">Id Number<span class="text-danger"> *</span></label>

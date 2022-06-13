@@ -26,6 +26,10 @@ class Package extends Model
         return $this->hasMany(Image::class,'package_id');
     }
 
+    public function slider(){
+        return $this->hasMany(Slider::class);
+    }
+
     public function reservation(){
         return $this->hasMany(Reservation::class);
     }

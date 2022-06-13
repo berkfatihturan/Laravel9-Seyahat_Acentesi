@@ -12,16 +12,16 @@ body{
 }
 
 .crousel-item-index__detail{
-    margin-left: calc(100% - 63vw);
-
+    margin-left: calc(100% - 65vw);
     position:relative;
 }
 
 .crousel-item-index__img{
     position: absolute;
     top:131px;
-    margin-left: calc(100% - 80vw);
+    margin-left: calc(100% - 85vw);
 }
+
 
 
 

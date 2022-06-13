@@ -49,8 +49,8 @@
                                             <td>{!! $rs->answer !!}</td>
                                             <td>{{$rs->status}}</td>
                                             <td> <a href="{{route('admin_faq_edit',['id'=>$rs->id])}}" class="btn btn-block btn-info btn-sm">Edit</a> </td>
-                                            <td> <a href="{{route('admin_package_destroy',['id'=>$rs->id])}}" class="btn btn-block btn-danger btn-sm">Delete</a> </td>
-                                            <td> <a href="{{route('admin_package_show',['id'=>$rs->id])}}" class="btn btn-block btn-success btn-sm">Show</a> </td>
+                                            <td> <a href="{{route('admin_faq_destroy',['id'=>$rs->id])}}" class="btn btn-block btn-danger btn-sm">Delete</a> </td>
+                                            <td> <a href="{{route('admin_faq_show',['id'=>$rs->id])}}" class="btn btn-block btn-success btn-sm">Show</a> </td>
                                         </tr>
                                     @endforeach
                                     </tbody>

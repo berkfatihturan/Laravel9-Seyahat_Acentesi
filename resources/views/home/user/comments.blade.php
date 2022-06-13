@@ -101,10 +101,10 @@
                                     <label class="col-md-3 control-label" style="width: auto">YOUR RATING:</label>
                                     <div class="rating">
                                         <input type="radio" name="rate" value="5" id="5-{{$cmt->id}}" @if($cmt->rate==5)  checked @endif><label for="5-{{$cmt->id}}">☆</label>
-                                        <input type="radio" name="rate" value="4" id="4-{{$cmt->id}} " @if($cmt->rate==4)  checked @endif><label for="4-{{$cmt->id}}">☆</label>
+                                        <input type="radio" name="rate" value="4" id="4-{{$cmt->id}}" @if($cmt->rate==4)  checked @endif><label for="4-{{$cmt->id}}">☆</label>
                                         <input type="radio" name="rate" value="3" id="3-{{$cmt->id}}" @if($cmt->rate==3)  checked @endif><label for="3-{{$cmt->id}}">☆</label>
                                         <input type="radio" name="rate" value="2" id="2-{{$cmt->id}}" @if($cmt->rate==2)  checked @endif><label for="2-{{$cmt->id}}">☆</label>
-                                        <input type="radio" name="rate" value="1" id="1-{{$cmt->id}}" ><label for="1">☆</label>
+                                        <input type="radio" name="rate" value="1" id="1-{{$cmt->id}}" @if($cmt->rate==1)  checked @endif><label for="1-{{$cmt->id}}">☆</label>
                                     </div>
                                     <input type="hidden" name="package_id" value="">
                                     <button class="btn btn-primary pull-right" style="border-radius: 5px; font-weight:500">Update</button>

@@ -30,6 +30,18 @@
                         <input class="form-control" type="text" placeholder="Title" name="title" value="{{$img->title}}">
                     </div>
 
+                    <div class="dropdown-item">
+                        <label>Package Id</label>
+                        <select class="form-control"  name="package_id" required>
+                            <option value="0"> Main Category</option>
+                            @foreach($pack as $rs)
+                                <option value="{{$rs->id}}" @if($rs->id == $img->id) selected @endif>
+                                    {{$rs->title}}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
+
                     <div class="form-group" class="dropdown-item">
                         <label>Image</label>
                         <input class="form-control" type="file" name="image" value="{{$img->image}}">
@@ -37,9 +49,7 @@
 
                     <div class="form-group" class="dropdown-item">
                         <label>Image Slıder Detail</label>
-                        <textarea class="form-control editor" name="slider_text">
-                                                {!! $img->slider_text !!}
-                                            </textarea>
+                        <textarea class="form-control editor" name="slider_text">{!! $img->slider_text !!}</textarea>
                     </div>
                     <button type="submit" class="btn btn-info">Update</button>
                 </form>
