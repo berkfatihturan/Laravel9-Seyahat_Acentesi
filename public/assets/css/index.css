@@ -16,6 +16,12 @@ body{
     position:relative;
 }
 
+@media (max-width: 720px) {
+    .crousel-item-index__detail{
+        display: none;
+    }
+}
+
 .crousel-item-index__img{
     position: absolute;
     top:131px;
